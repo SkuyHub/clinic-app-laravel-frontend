@@ -8,10 +8,16 @@ export interface UploadResponse {
   field_value: string
 }
 
+function getUploadEndpoint(): string {
+  if (window.location.pathname.startsWith('/doctor')) return '/doctor/upload-tmp'
+  if (window.location.pathname.startsWith('/patient')) return '/patient/upload-tmp'
+  return '/upload-tmp'
+}
+
 export async function uploadTmp(file: File): Promise<UploadResponse> {
   const form = new FormData()
   form.append('file', file)
-  const { data } = await http.post<UploadResponse>('/upload-tmp', form, {
+  const { data } = await http.post<UploadResponse>(getUploadEndpoint(), form, {
     headers: { 'Content-Type': 'multipart/form-data' },
   })
   return data
