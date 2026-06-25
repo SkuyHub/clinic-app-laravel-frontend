@@ -45,3 +45,23 @@ export interface MeResponse {
   data: AuthUser
   permissions: string[]
 }
+
+export interface DoctorUser {
+  id: number
+  fullname: string
+  specialization: string
+  email: string
+  phone?: string
+  photo?: string | null
+}
+
+export interface PatientUser {
+  id: number
+  fullname: string
+  email: string
+  phone?: string
+  birthdate?: string
+  gender?: string
+  address?: string
+  photo?: string | null
+}

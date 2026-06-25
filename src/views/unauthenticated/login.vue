@@ -2,9 +2,13 @@
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { auth } from '@/stores/auth'
+import { doctorAuth } from '@/stores/doctor-auth'
+import { patientAuth } from '@/stores/patient-auth'
+import http from '@/utils/http'
 
 const router = useRouter()
-const username = ref('')
+
+const email = ref('')
 const password = ref('')
 const error = ref('')
 const loading = ref(false)
@@ -13,8 +17,26 @@ async function onSubmit() {
   error.value = ''
   loading.value = true
   try {
-    await auth().login(username.value, password.value)
-    router.push({ path: '/clinical/doctors' })
+    const { data: body } = await http.post('/login', { email: email.value, password: password.value })
+    const { token, role, data } = body as { token: string; role: string; data: Record<string, any> }
+
+    if (role === 'admin') {
+      localStorage.setItem('token', token)
+      localStorage.setItem('user', JSON.stringify(data))
+      auth().user = data as any
+      await auth().fetchProfile()
+      router.push({ path: '/clinical/doctors' })
+    } else if (role === 'doctor') {
+      localStorage.setItem('doctor_token', token)
+      localStorage.setItem('doctor_user', JSON.stringify(data))
+      doctorAuth().user = data as any
+      router.push({ path: '/doctor' })
+    } else {
+      localStorage.setItem('patient_token', token)
+      localStorage.setItem('patient_user', JSON.stringify(data))
+      patientAuth().user = data as any
+      router.push({ path: '/patient' })
+    }
   } catch (err: any) {
     error.value = err.response?.data?.message ?? 'Login failed. Please try again.'
   } finally {
@@ -26,12 +48,13 @@ async function onSubmit() {
 <template>
   <div class="flex min-h-screen items-center justify-center bg-clinic-50">
     <form class="w-full max-w-sm rounded-lg bg-white p-8 shadow" @submit.prevent="onSubmit">
-      <h1 class="mb-6 text-xl font-semibold text-clinic-900">Clinic Admin Login</h1>
+      <h1 class="mb-1 text-xl font-semibold text-clinic-900">Clinic App</h1>
+      <p class="mb-6 text-sm text-gray-500">Sign in to your account</p>
 
-      <label class="mb-1 block text-sm font-medium text-gray-700">Username or email</label>
+      <label class="mb-1 block text-sm font-medium text-gray-700">Email</label>
       <input
-        v-model="username"
-        type="text"
+        v-model="email"
+        type="email"
         required
         class="mb-4 w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none"
       />

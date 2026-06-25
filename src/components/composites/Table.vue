@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from 'vue'
 import services from '@/utils/services'
+import http from '@/utils/http'
 import { resolveFileUrl } from '@/utils/files'
 import Avatar from '@/components/base/Avatar.vue'
 import Badge from '@/components/base/Badge.vue'
@@ -8,6 +9,7 @@ import Pagination from './Pagination.vue'
 
 const props = defineProps<{
   getAPI: string
+  endpointUrl?: string
   fields: string[]
   fieldsAlias?: Record<string, string>
   fieldsProxy?: Record<string, string>
@@ -21,18 +23,48 @@ const loading = ref(true)
 const page = ref(1)
 const total = ref(0)
 const lastPage = ref(1)
+const sortField = ref<string | null>(null)
+const sortOrder = ref<'asc' | 'desc'>('asc')
+
+function toggleSort(field: string) {
+  if (sortField.value === field) {
+    if (sortOrder.value === 'asc') {
+      sortOrder.value = 'desc'
+    } else {
+      sortField.value = null
+      sortOrder.value = 'asc'
+    }
+  } else {
+    sortField.value = field
+    sortOrder.value = 'asc'
+  }
+  page.value = 1
+  load()
+}
 
 async function load() {
   loading.value = true
   try {
-    const res = await services.list(props.getAPI, {
+    const params = {
       page: page.value,
       limit: 10,
+      sort: sortField.value,
+      order: sortOrder.value,
       ...props.searchParameters,
-    })
-    rows.value = res.data
-    total.value = res.total
-    lastPage.value = res.last_page
+    }
+
+    if (props.endpointUrl) {
+      const axiosRes = await http.get(props.endpointUrl, { params })
+      const body = axiosRes.data
+      rows.value = body.data ?? []
+      total.value = body.total ?? 0
+      lastPage.value = body.last_page ?? 1
+    } else {
+      const res = await services.list(props.getAPI, params)
+      rows.value = res.data
+      total.value = res.total
+      lastPage.value = res.last_page
+    }
   } finally {
     loading.value = false
   }
@@ -90,9 +122,11 @@ defineExpose({ refresh: load })
             <th
               v-for="field in fields"
               :key="field"
-              class="whitespace-nowrap px-4 py-2.5 text-left text-[10.5px] font-semibold uppercase tracking-wide text-gray-500"
+              class="whitespace-nowrap px-4 py-2.5 text-left text-[10.5px] font-semibold uppercase tracking-wide text-gray-500 cursor-pointer select-none hover:text-gray-700"
+              @click="toggleSort(field)"
             >
               {{ fieldsAlias?.[field] ?? field }}
+              <span v-if="sortField === field" class="ml-1 text-clinic-600">{{ sortOrder === 'asc' ? '▲' : '▼' }}</span>
             </th>
             <th class="px-4 py-2.5 text-left text-[10.5px] font-semibold uppercase tracking-wide text-gray-500">Actions</th>
           </tr>

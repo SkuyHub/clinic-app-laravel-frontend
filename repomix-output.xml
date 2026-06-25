@@ -1,0 +1,2773 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+index.html
+package.json
+postcss.config.js
+public/favicon.svg
+public/icons.svg
+README.md
+src/App.vue
+src/app/actions/CRUD/CRUDList.ts
+src/app/actions/Form.ts
+src/app/configs/_defaults.ts
+src/app/configs/appointments.ts
+src/app/configs/doctors.ts
+src/app/configs/medicalrecords.ts
+src/app/configs/patients.ts
+src/app/configs/roles.ts
+src/app/configs/rooms.ts
+src/app/configs/tasks.ts
+src/app/configs/users.ts
+src/assets/hero.png
+src/assets/vite.svg
+src/assets/vue.svg
+src/components/base/Avatar.vue
+src/components/base/Badge.vue
+src/components/composites/CRUD/CRUDCreate.vue
+src/components/composites/CRUD/CRUDDetail.vue
+src/components/composites/CRUD/CRUDList.vue
+src/components/composites/CRUD/CRUDUpdate.vue
+src/components/composites/CRUDComposite.vue
+src/components/composites/Form.vue
+src/components/composites/Pagination.vue
+src/components/composites/SearchBox.vue
+src/components/composites/Table.vue
+src/components/HelloWorld.vue
+src/components/inputs/BaseInput.vue
+src/components/inputs/DateInput.vue
+src/components/inputs/ImageInput.vue
+src/components/inputs/NumberInput.vue
+src/components/inputs/PasswordInput.vue
+src/components/inputs/RadioInput.vue
+src/components/inputs/SelectInput.vue
+src/components/inputs/TextareaInput.vue
+src/components/inputs/TextInput.vue
+src/components/layout/Sidebar.vue
+src/layouts/Authenticated.vue
+src/main.ts
+src/menu.ts
+src/router/index.ts
+src/stores/auth.ts
+src/stores/permissions.ts
+src/style.css
+src/types/api.ts
+src/types/index.d.ts
+src/utils/files.ts
+src/utils/http.ts
+src/utils/services.ts
+src/utils/storage.ts
+src/utils/upload.ts
+src/views/authenticated/access/roles/roles.vue
+src/views/authenticated/access/tasks/tasks.vue
+src/views/authenticated/access/users/users.vue
+src/views/authenticated/clinical/appointments/appointments.vue
+src/views/authenticated/clinical/doctors/doctors.vue
+src/views/authenticated/clinical/medicalrecords/medicalrecords.vue
+src/views/authenticated/clinical/patients/patients.vue
+src/views/authenticated/clinical/rooms/rooms.vue
+src/views/unauthenticated/login/login.vue
+tailwind.config.js
+tsconfig.app.json
+tsconfig.json
+tsconfig.node.json
+vite.config.ts
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path=".gitignore">
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+</file>
+
+<file path="index.html">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clinic-admin</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
+</file>
+
+<file path="package.json">
+{
+  "name": "clinic-admin",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.18.0",
+    "pinia": "^3.0.4",
+    "remixicon": "^4.9.1",
+    "vue": "^3.5.34",
+    "vue-router": "^5.1.0",
+    "vue-sonner": "^2.0.9"
+  },
+  "devDependencies": {
+    "@types/node": "^24.12.3",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/tsconfig": "^0.9.1",
+    "autoprefixer": "^10.5.0",
+    "postcss": "^8.5.15",
+    "tailwindcss": "^3.4.19",
+    "typescript": "~6.0.2",
+    "vite": "^8.0.12",
+    "vue-tsc": "^3.2.8"
+  }
+}
+</file>
+
+<file path="postcss.config.js">
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+</file>
+
+<file path="public/favicon.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="46" fill="none" viewBox="0 0 48 46"><path fill="#863bff" d="M25.946 44.938c-.664.845-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.287c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.497 0-3.578-1.842-3.578H1.237c-.92 0-1.456-1.04-.92-1.788L10.013.474c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.579 1.842 3.579h11.377c.943 0 1.473 1.088.89 1.83L25.947 44.94z" style="fill:#863bff;fill:color(display-p3 .5252 .23 1);fill-opacity:1"/><mask id="a" width="48" height="46" x="0" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M25.842 44.938c-.664.844-2.021.375-2.021-.698V33.937a2.26 2.26 0 0 0-2.262-2.262H10.183c-.92 0-1.456-1.04-.92-1.788l7.48-10.471c1.07-1.498 0-3.579-1.842-3.579H1.133c-.92 0-1.456-1.04-.92-1.787L9.91.473c.214-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.471c-1.07 1.498 0 3.578 1.842 3.578h11.377c.943 0 1.473 1.088.89 1.832L25.843 44.94z" style="fill:#000;fill-opacity:1"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#ede6ff" rx="5.508" ry="14.704" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -4.47 31.516)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#ede6ff" rx="10.399" ry="29.851" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -39.328 7.883)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#7e14ff" rx="5.508" ry="30.487" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.814 -25.913 -14.639)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#7e14ff" rx="5.508" ry="30.599" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.814 -32.644 -3.334)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#7e14ff" rx="5.508" ry="30.599" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="matrix(.00324 1 1 -.00324 -34.34 30.47)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#ede6ff" rx="14.072" ry="22.078" style="fill:#ede6ff;fill:color(display-p3 .9275 .9033 1);fill-opacity:1" transform="rotate(93.35 24.506 48.493)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#7e14ff" rx="3.47" ry="21.501" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.009 28.708 47.59)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#7e14ff" rx="3.47" ry="21.501" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(89.009 28.708 47.59)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx=".387" cy="8.972" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(39.51 .387 8.972)"/></g><g filter="url(#k)"><ellipse cx="47.523" cy="-6.092" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 47.523 -6.092)"/></g><g filter="url(#l)"><ellipse cx="41.412" cy="6.333" fill="#47bfff" rx="5.971" ry="9.665" style="fill:#47bfff;fill:color(display-p3 .2799 .748 1);fill-opacity:1" transform="rotate(37.892 41.412 6.333)"/></g><g filter="url(#m)"><ellipse cx="-1.879" cy="38.332" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 -1.88 38.332)"/></g><g filter="url(#n)"><ellipse cx="-1.879" cy="38.332" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 -1.88 38.332)"/></g><g filter="url(#o)"><ellipse cx="35.651" cy="29.907" fill="#7e14ff" rx="4.407" ry="29.108" style="fill:#7e14ff;fill:color(display-p3 .4922 .0767 1);fill-opacity:1" transform="rotate(37.892 35.651 29.907)"/></g><g filter="url(#p)"><ellipse cx="38.418" cy="32.4" fill="#47bfff" rx="5.971" ry="15.297" style="fill:#47bfff;fill:color(display-p3 .2799 .748 1);fill-opacity:1" transform="rotate(37.892 38.418 32.4)"/></g></g><defs><filter id="b" width="60.045" height="41.654" x="-19.77" y="16.149" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-54.613" y="-7.533" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-49.64" y="2.03" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-45.045" y="20.029" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-43.513" y="21.178" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="15.756" y="-17.901" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="23.548" y="2.284" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="23.548" y="2.284" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-27.636" y="-22.853" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="20.116" y="-38.415" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="24.641" y="-11.323" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-29.286" y="6.009" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-29.286" y="6.009" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="8.244" y="-2.416" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="18.713" y="10.588" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17158" stdDeviation="4.596"/></filter></defs></svg>
+</file>
+
+<file path="public/icons.svg">
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="bluesky-icon" viewBox="0 0 16 17">
+    <g clip-path="url(#bluesky-clip)"><path fill="#08060d" d="M7.75 7.735c-.693-1.348-2.58-3.86-4.334-5.097-1.68-1.187-2.32-.981-2.74-.79C.188 2.065.1 2.812.1 3.251s.241 3.602.398 4.13c.52 1.744 2.367 2.333 4.07 2.145-2.495.37-4.71 1.278-1.805 4.512 3.196 3.309 4.38-.71 4.987-2.746.608 2.036 1.307 5.91 4.93 2.746 2.72-2.746.747-4.143-1.747-4.512 1.702.189 3.55-.4 4.07-2.145.156-.528.397-3.691.397-4.13s-.088-1.186-.575-1.406c-.42-.19-1.06-.395-2.741.79-1.755 1.24-3.64 3.752-4.334 5.099"/></g>
+    <defs><clipPath id="bluesky-clip"><path fill="#fff" d="M.1.85h15.3v15.3H.1z"/></clipPath></defs>
+  </symbol>
+  <symbol id="discord-icon" viewBox="0 0 20 19">
+    <path fill="#08060d" d="M16.224 3.768a14.5 14.5 0 0 0-3.67-1.153c-.158.286-.343.67-.47.976a13.5 13.5 0 0 0-4.067 0c-.128-.306-.317-.69-.476-.976A14.4 14.4 0 0 0 3.868 3.77C1.546 7.28.916 10.703 1.231 14.077a14.7 14.7 0 0 0 4.5 2.306q.545-.748.965-1.587a9.5 9.5 0 0 1-1.518-.74q.191-.14.372-.293c2.927 1.369 6.107 1.369 8.999 0q.183.152.372.294-.723.437-1.52.74.418.838.963 1.588a14.6 14.6 0 0 0 4.504-2.308c.37-3.911-.63-7.302-2.644-10.309m-9.13 8.234c-.878 0-1.599-.82-1.599-1.82 0-.998.705-1.82 1.6-1.82.894 0 1.614.82 1.599 1.82.001 1-.705 1.82-1.6 1.82m5.91 0c-.878 0-1.599-.82-1.599-1.82 0-.998.705-1.82 1.6-1.82.893 0 1.614.82 1.599 1.82 0 1-.706 1.82-1.6 1.82"/>
+  </symbol>
+  <symbol id="documentation-icon" viewBox="0 0 21 20">
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="m15.5 13.333 1.533 1.322c.645.555.967.833.967 1.178s-.322.623-.967 1.179L15.5 18.333m-3.333-5-1.534 1.322c-.644.555-.966.833-.966 1.178s.322.623.966 1.179l1.534 1.321"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M17.167 10.836v-4.32c0-1.41 0-2.117-.224-2.68-.359-.906-1.118-1.621-2.08-1.96-.599-.21-1.349-.21-2.848-.21-2.623 0-3.935 0-4.983.369-1.684.591-3.013 1.842-3.641 3.428C3 6.449 3 7.684 3 10.154v2.122c0 2.558 0 3.838.706 4.726q.306.383.713.671c.76.536 1.79.64 3.581.66"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M3 10a2.78 2.78 0 0 1 2.778-2.778c.555 0 1.209.097 1.748-.047.48-.129.854-.503.982-.982.145-.54.048-1.194.048-1.749a2.78 2.78 0 0 1 2.777-2.777"/>
+  </symbol>
+  <symbol id="github-icon" viewBox="0 0 19 19">
+    <path fill="#08060d" fill-rule="evenodd" d="M9.356 1.85C5.05 1.85 1.57 5.356 1.57 9.694a7.84 7.84 0 0 0 5.324 7.44c.387.079.528-.168.528-.376 0-.182-.013-.805-.013-1.454-2.165.467-2.616-.935-2.616-.935-.349-.91-.864-1.143-.864-1.143-.71-.48.051-.48.051-.48.787.051 1.2.805 1.2.805.695 1.194 1.817.857 2.268.649.064-.507.27-.857.49-1.052-1.728-.182-3.545-.857-3.545-3.87 0-.857.31-1.558.8-2.104-.078-.195-.349-1 .077-2.078 0 0 .657-.208 2.14.805a7.5 7.5 0 0 1 1.946-.26c.657 0 1.328.092 1.946.26 1.483-1.013 2.14-.805 2.14-.805.426 1.078.155 1.883.078 2.078.502.546.799 1.247.799 2.104 0 3.013-1.818 3.675-3.558 3.87.284.247.528.714.528 1.454 0 1.052-.012 1.896-.012 2.156 0 .208.142.455.528.377a7.84 7.84 0 0 0 5.324-7.441c.013-4.338-3.48-7.844-7.773-7.844" clip-rule="evenodd"/>
+  </symbol>
+  <symbol id="social-icon" viewBox="0 0 20 20">
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M12.5 6.667a4.167 4.167 0 1 0-8.334 0 4.167 4.167 0 0 0 8.334 0"/>
+    <path fill="none" stroke="#aa3bff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.35" d="M2.5 16.667a5.833 5.833 0 0 1 8.75-5.053m3.837.474.513 1.035c.07.144.257.282.414.309l.93.155c.596.1.736.536.307.965l-.723.73a.64.64 0 0 0-.152.531l.207.903c.164.715-.213.991-.84.618l-.872-.52a.63.63 0 0 0-.577 0l-.872.52c-.624.373-1.003.094-.84-.618l.207-.903a.64.64 0 0 0-.152-.532l-.723-.729c-.426-.43-.289-.864.306-.964l.93-.156a.64.64 0 0 0 .412-.31l.513-1.034c.28-.562.735-.562 1.012 0"/>
+  </symbol>
+  <symbol id="x-icon" viewBox="0 0 19 19">
+    <path fill="#08060d" fill-rule="evenodd" d="M1.893 1.98c.052.072 1.245 1.769 2.653 3.77l2.892 4.114c.183.261.333.48.333.486s-.068.089-.152.183l-.522.593-.765.867-3.597 4.087c-.375.426-.734.834-.798.905a1 1 0 0 0-.118.148c0 .01.236.017.664.017h.663l.729-.83c.4-.457.796-.906.879-.999a692 692 0 0 0 1.794-2.038c.034-.037.301-.34.594-.675l.551-.624.345-.392a7 7 0 0 1 .34-.374c.006 0 .93 1.306 2.052 2.903l2.084 2.965.045.063h2.275c1.87 0 2.273-.003 2.266-.021-.008-.02-1.098-1.572-3.894-5.547-2.013-2.862-2.28-3.246-2.273-3.266.008-.019.282-.332 2.085-2.38l2-2.274 1.567-1.782c.022-.028-.016-.03-.65-.03h-.674l-.3.342a871 871 0 0 1-1.782 2.025c-.067.075-.405.458-.75.852a100 100 0 0 1-.803.91c-.148.172-.299.344-.99 1.127-.304.343-.32.358-.345.327-.015-.019-.904-1.282-1.976-2.808L6.365 1.85H1.8zm1.782.91 8.078 11.294c.772 1.08 1.413 1.973 1.425 1.984.016.017.241.02 1.05.017l1.03-.004-2.694-3.766L7.796 5.75 5.722 2.852l-1.039-.004-1.039-.004z" clip-rule="evenodd"/>
+  </symbol>
+</svg>
+</file>
+
+<file path="README.md">
+# Vue 3 + TypeScript + Vite
+
+This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+
+Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+</file>
+
+<file path="src/App.vue">
+<script setup lang="ts">
+import { onMounted } from 'vue'
+import { Toaster } from 'vue-sonner'
+import { auth } from '@/stores/auth'
+
+const authStore = auth()
+
+onMounted(async () => {
+  if (authStore.isAuthenticated) {
+    try {
+      await authStore.fetchProfile()
+    } catch {
+      // intentionally empty — http.ts interceptor owns the 401 response
+    }
+  }
+})
+</script>
+
+<template>
+  <RouterView />
+  <Toaster position="top-right" :duration="3500" />
+</template>
+</file>
+
+<file path="src/app/actions/CRUD/CRUDList.ts">
+import { toast } from 'vue-sonner'
+import services from '@/utils/services'
+
+export async function onDelete(model: string, id: number | string): Promise<void> {
+    try {
+        await services.delete(model, id)
+        toast.success('Record deleted.')
+    } catch (err: any) {
+        toast.error(err.response?.data?.message ?? 'Delete failed.')
+        throw err
+    }
+}
+</file>
+
+<file path="src/app/actions/Form.ts">
+import { defineAsyncComponent, type Component } from "vue"
+import services from '@/utils/services'
+
+export const componentTypeMap: Record<string, Component> = {
+    text:     defineAsyncComponent(() => import('@/components/inputs/TextInput.vue')),
+    password: defineAsyncComponent(() => import('@/components/inputs/PasswordInput.vue')),
+    textarea: defineAsyncComponent(() => import('@/components/inputs/TextareaInput.vue')),
+    number:   defineAsyncComponent(() => import('@/components/inputs/NumberInput.vue')),
+    date:     defineAsyncComponent(() => import('@/components/inputs/DateInput.vue')),
+    select:   defineAsyncComponent(() => import('@/components/inputs/SelectInput.vue')),
+    radio:    defineAsyncComponent(() => import('@/components/inputs/RadioInput.vue')),
+    image:    defineAsyncComponent(() => import('@/components/inputs/ImageInput.vue')),
+}
+
+export async function defaultFormGetData(
+    getAPI: string,
+    id: string | number,
+): Promise<Record<string,any>> {
+    const res = await services.show(getAPI, id)
+    return res.data
+}
+</file>
+
+<file path="src/app/configs/_defaults.ts">
+import type {} from 'vue'
+
+export const defaultTableConfig: {
+    fieldsAlias: Record<string, string>
+    fieldsType: Record<string,FieldTypeConfig>
+} = {
+    fieldsAlias: {
+        id: 'ID',
+        created_at: 'Created',
+        updated_at: 'Updated',
+    },
+    fieldsType: {
+        created_at: {type: 'datetime'},
+        updated_at: {type: 'datetime'},
+    },
+}
+
+export const defaultFormConfig: {
+    fieldsAlias: Record<string, string>
+} = {
+    fieldsAlias: {
+        ...defaultTableConfig.fieldsAlias,
+        fullname: 'Full name',
+        username: 'Username',
+        email: 'Email',
+        phone: 'Phone',
+        active: 'Status',
+        available: 'Availability',
+        description: 'Description',
+        notes: 'Notes',
+        role_id: 'Role',
+        doctor_id: 'Doctor',
+        patient_id: 'Patient',
+        room_id: 'Room',
+        appointment_id: 'Appointment',
+        appointment_date: 'Date',
+        appointment_time: 'Time',
+        status: 'Status',
+        diagnosis: 'Diagnosis',
+        treatment: 'Treatment',
+        prescription: 'Prescription',
+        birthdate: 'Date Of Birth',
+        gender: 'Gender',
+        address: 'Address',
+        room_code: 'Room Code',
+        room_name: 'Room Name',
+        capacity: 'Capacity',
+        role_code: 'Role Code',
+        role_name: 'Role Name',
+        task_code: 'Task Code',
+        task_name: 'Task Name',
+        module: 'Module',
+        specialization: 'Specialization',
+    },
+}
+
+export function booleanBadge(
+    trueLabel: string, falseLabel: string,
+    trueVariant: FieldTypeConfig['type'] = 'available',
+    falseVariant: FieldTypeConfig['type'] = 'occupied',
+): FieldTypeConfig {
+    return {
+        type: 'badge',
+        props: {
+            map: {
+                true: { label: trueLabel, variant: trueVariant },
+                false: { label: falseLabel, variant: falseVariant },
+            },
+        },
+    }
+}
+
+export function booleanRadio(trueLabel: string, falseLabel: string): InputFieldConfig {
+    return {
+        type: 'radio',
+        props: { data: [{ id: true, name: trueLabel }, { id: false, name: falseLabel }]},
+    }
+}
+</file>
+
+<file path="src/app/configs/appointments.ts">
+import { defaultTableConfig } from './_defaults'
+
+const statusBadge = {
+  type: 'badge',
+  props: {
+    map: {
+      scheduled: { label: 'Scheduled', variant: 'scheduled' },
+      completed:  { label: 'Completed', variant: 'completed' },
+      cancelled:  { label: 'Cancelled', variant: 'cancelled' },
+    },
+  },
+}
+
+const appointments: CRUDCompositeConfig = {
+  name: 'appointments',
+  title: 'Appointments',
+  view: {
+    fields: ['id', 'doctor_id', 'patient_id', 'room_id', 'appointment_date', 'appointment_time', 'status', 'notes', 'created_at'],
+    fieldsProxy: { doctor_id: 'rel_doctor_id', patient_id: 'rel_patient_id', room_id: 'rel_room_id' },
+    fieldsType: { status: statusBadge, ...defaultTableConfig.fieldsType },
+    list: {
+      fields: ['doctor_id', 'patient_id', 'room_id', 'appointment_date', 'appointment_time', 'status'],
+      fieldsProxy: { doctor_id: 'rel_doctor_id', patient_id: 'rel_patient_id', room_id: 'rel_room_id' },
+      fieldsType: { status: statusBadge },
+    },
+  },
+  transaction: {
+    fields: ['doctor_id', 'patient_id', 'room_id', 'appointment_date', 'appointment_time', 'status', 'notes'],
+    inputConfig: {
+      doctor_id:        { type: 'select',   props: { required: true, getAPI: 'doctors',  view: 'fullname' }, colSpan: 6 },
+      patient_id:       { type: 'select',   props: { required: true, getAPI: 'patients', view: 'fullname' }, colSpan: 6 },
+      room_id:          { type: 'select',   props: { required: true, getAPI: 'rooms',    view: 'room_name', pick: 'id' }, colSpan: 6 },
+      appointment_date: { type: 'date',     props: { required: true }, colSpan: 6 },
+      // type: 'time' is the HTML input type, passed through to TextInput's :type binding
+      appointment_time: { type: 'text',     props: { required: true, type: 'time' }, colSpan: 6 },
+      status: {
+        type: 'select',
+        props: {
+          data: [
+            { id: 'scheduled', name: 'Scheduled' },
+            { id: 'completed', name: 'Completed' },
+            { id: 'cancelled', name: 'Cancelled' },
+          ],
+        },
+        colSpan: 6,
+      },
+      notes: { type: 'textarea', props: { placeholder: 'Additional notes…' } },
+    },
+  },
+}
+export default appointments
+</file>
+
+<file path="src/app/configs/doctors.ts">
+import { defaultTableConfig, booleanBadge, booleanRadio } from './_defaults'
+
+const doctors: CRUDCompositeConfig = {
+  name: 'doctors',
+  title: 'Doctors',
+  view: {
+    fields: ['id', 'photo', 'fullname', 'specialization', 'email', 'phone', 'available', 'created_at'],
+    fieldsType: { available: booleanBadge('Available', 'Occupied'), photo: { type: 'image' }, ...defaultTableConfig.fieldsType },
+    list: {
+      fields: ['photo', 'specialization', 'email', 'phone', 'available'],
+      fieldsAlias: { photo: 'Name' },
+      fieldsType: {
+        photo: { type: 'avatar-name', props: { nameField: 'fullname', variant: 'green' } },
+        available: booleanBadge('Available', 'Occupied'),
+        ...defaultTableConfig.fieldsType,
+      },
+    },
+  },
+  transaction: {
+    fields: ['fullname', 'specialization', 'email', 'password', 'phone', 'available', 'photo'],
+    inputConfig: {
+      fullname:       { type: 'text',     props: { required: true, placeholder: 'Dr. John Smith' }, colSpan: 6 },
+      specialization: { type: 'text',     props: { required: true, placeholder: 'e.g. Cardiology' }, colSpan: 6 },
+      email:          { type: 'text',     props: { required: true, placeholder: 'doctor@clinic.com' }, colSpan: 6 },
+      phone:          { type: 'text',     props: { placeholder: '+62...' }, colSpan: 6 },
+      password:       { type: 'password', props: { placeholder: 'Leave blank to keep current' }, colSpan: 6 },
+      available:      { ...booleanRadio('Available', 'Occupied'), colSpan: 6 },
+      photo:          { type: 'image' },
+    },
+    create: {
+      inputConfig: {
+        password: { type: 'password', props: { required: true, placeholder: 'Required' }, colSpan: 6 },
+      },
+    },
+  },
+}
+export default doctors
+</file>
+
+<file path="src/app/configs/medicalrecords.ts">
+import { defaultTableConfig } from './_defaults'
+
+const medicalrecords: CRUDCompositeConfig = {
+  name: 'medicalrecords',
+  title: 'Medical Records',
+  view: {
+    fields: ['id', 'doctor_id', 'patient_id', 'diagnosis', 'treatment', 'prescription', 'notes', 'created_at'],
+    fieldsProxy: { doctor_id: 'rel_doctor_id', patient_id: 'rel_patient_id' },
+    fieldsType: { ...defaultTableConfig.fieldsType },
+    list: {
+      fields: ['doctor_id', 'patient_id', 'diagnosis', 'created_at'],
+      fieldsProxy: { doctor_id: 'rel_doctor_id', patient_id: 'rel_patient_id' },
+      fieldsType: { ...defaultTableConfig.fieldsType },
+    },
+  },
+  transaction: {
+    inputConfig: {
+      diagnosis:    { type: 'textarea', props: { required: true, rows: 4 } },
+      treatment:    { type: 'textarea', props: { rows: 4 } },
+      prescription: { type: 'textarea', props: { rows: 3 } },
+      notes:        { type: 'textarea', props: { rows: 3 } },
+    },
+    create: {
+      fields: ['appointment_id', 'doctor_id', 'patient_id', 'diagnosis', 'treatment', 'prescription', 'notes'],
+      inputConfig: {
+        appointment_id: { type: 'select', props: { required: true, getAPI: 'appointments', view: 'appointment_date', pick: 'id' }, colSpan: 12 },
+        doctor_id:      { type: 'select', props: { required: true, getAPI: 'doctors',      view: 'fullname' }, colSpan: 6 },
+        patient_id:     { type: 'select', props: { required: true, getAPI: 'patients',     view: 'fullname' }, colSpan: 6 },
+        diagnosis:      { type: 'textarea', props: { required: true, rows: 4 } },
+        treatment:      { type: 'textarea', props: { rows: 4 } },
+        prescription:   { type: 'textarea', props: { rows: 3 } },
+        notes:          { type: 'textarea', props: { rows: 3 } },
+      },
+    },
+    update: {
+      fields: ['diagnosis', 'treatment', 'prescription', 'notes'],
+    },
+  },
+}
+export default medicalrecords
+</file>
+
+<file path="src/app/configs/patients.ts">
+import { defaultTableConfig } from './_defaults'
+
+const patients: CRUDCompositeConfig = {
+  name: 'patients',
+  title: 'Patients',
+  view: {
+    fields: ['id', 'photo', 'fullname', 'email', 'phone', 'gender', 'birthdate', 'address', 'created_at'],
+    fieldsType: { photo: { type: 'image' }, ...defaultTableConfig.fieldsType },
+    list: {
+      fields: ['photo', 'email', 'phone', 'gender', 'birthdate'],
+      fieldsAlias: { photo: 'Name' },
+      fieldsType: {
+        photo: { type: 'avatar-name', props: { nameField: 'fullname', variant: 'teal' } },
+        ...defaultTableConfig.fieldsType,
+      },
+    },
+  },
+  transaction: {
+    fields: ['fullname', 'email', 'password', 'phone', 'birthdate', 'gender', 'address', 'photo'],
+    inputConfig: {
+      fullname: { type: 'text',     props: { required: true }, colSpan: 6 },
+      email:    { type: 'text',     props: { required: true, placeholder: 'patient@email.com' }, colSpan: 6 },
+      password: { type: 'password', props: { placeholder: 'Leave blank to keep current' }, colSpan: 6 },
+      phone:    { type: 'text',     props: { placeholder: '+62...' }, colSpan: 6 },
+      birthdate:{ type: 'date',     props: {}, colSpan: 6 },
+      gender:   { type: 'select',   props: { data: [{ id: 'male', name: 'Male' }, { id: 'female', name: 'Female' }] }, colSpan: 6 },
+      address:  { type: 'textarea', props: { placeholder: 'Full address' } },
+      photo:    { type: 'image' },
+    },
+    create: {
+      inputConfig: {
+        password: { type: 'password', props: { required: true }, colSpan: 6 },
+      },
+    },
+  },
+}
+export default patients
+</file>
+
+<file path="src/app/configs/roles.ts">
+import { defaultTableConfig, booleanBadge, booleanRadio } from './_defaults'
+
+const roles: CRUDCompositeConfig = {
+  name: 'roles',
+  title: 'Roles',
+  view: {
+    fields: ['id', 'role_code', 'role_name', 'description', 'active', 'created_at'],
+    fieldsType: { active: booleanBadge('Active', 'Inactive'), ...defaultTableConfig.fieldsType },
+    list: {
+      fields: ['role_code', 'role_name', 'description', 'active'],
+      fieldsType: { active: booleanBadge('Active', 'Inactive') },
+    },
+  },
+  transaction: {
+    fields: ['role_code', 'role_name', 'description', 'active'],
+    inputConfig: {
+      role_code:   { type: 'text',     props: { required: true, placeholder: 'e.g. ADMIN' }, colSpan: 6 },
+      role_name:   { type: 'text',     props: { required: true, placeholder: 'e.g. Administrator' }, colSpan: 6 },
+      description: { type: 'textarea', props: { placeholder: 'Optional description' } },
+      active:      { ...booleanRadio('Active', 'Inactive'), colSpan: 6 },
+    },
+  },
+}
+export default roles
+</file>
+
+<file path="src/app/configs/rooms.ts">
+import { booleanBadge, booleanRadio, defaultTableConfig } from './_defaults'
+
+const rooms: CRUDCompositeConfig = {
+  name: 'rooms',
+  title: 'Rooms',
+  view: {
+    fields: ['id', 'room_code', 'room_name', 'capacity', 'available', 'created_at'],
+    fieldsType: { available: booleanBadge('Available', 'Occupied'), ...defaultTableConfig.fieldsType },
+    list: {
+      fields: ['room_code', 'room_name', 'capacity', 'available'],
+      fieldsType: { available: booleanBadge('Available', 'Occupied') },
+    },
+  },
+  transaction: {
+    fields: ['room_code', 'room_name', 'capacity', 'available'],
+    inputConfig: {
+      room_code: { type: 'text',   props: { required: true, placeholder: 'e.g. R-001' }, colSpan: 6 },
+      room_name: { type: 'text',   props: { required: true, placeholder: 'e.g. Examination Room A' }, colSpan: 6 },
+      capacity:  { type: 'number', props: { required: true, min: 1, placeholder: '1' }, colSpan: 6 },
+      available: { ...booleanRadio('Available', 'Occupied'), colSpan: 6 },
+    },
+  },
+}
+export default rooms
+</file>
+
+<file path="src/app/configs/tasks.ts">
+import { defaultTableConfig, booleanBadge, booleanRadio } from './_defaults'
+
+const tasks: CRUDCompositeConfig = {
+  name: 'tasks',
+  title: 'Tasks',
+  view: {
+    fields: ['id', 'task_code', 'task_name', 'module', 'description', 'active', 'created_at'],
+    fieldsType: { active: booleanBadge('Active', 'Inactive'), ...defaultTableConfig.fieldsType },
+    list: {
+      fields: ['task_code', 'task_name', 'module', 'active'],
+      fieldsType: { active: booleanBadge('Active', 'Inactive') },
+    },
+  },
+  transaction: {
+    fields: ['task_code', 'task_name', 'module', 'description', 'active'],
+    inputConfig: {
+      task_code:   { type: 'text',     props: { required: true, placeholder: 'e.g. view-doctors' }, colSpan: 6 },
+      task_name:   { type: 'text',     props: { required: true, placeholder: 'e.g. View Doctors' }, colSpan: 6 },
+      module:      { type: 'text',     props: { required: true, placeholder: 'e.g. doctors' }, colSpan: 6 },
+      active:      { ...booleanRadio('Active', 'Inactive'), colSpan: 6 },
+      description: { type: 'textarea', props: { placeholder: 'Optional description' } },
+    },
+  },
+}
+export default tasks
+</file>
+
+<file path="src/app/configs/users.ts">
+import { defaultTableConfig, booleanBadge, booleanRadio } from './_defaults'
+
+const users: CRUDCompositeConfig = {
+  name: 'users',
+  title: 'Users',
+  view: {
+    fields: ['id', 'photo', 'fullname', 'username', 'email', 'role_id', 'active', 'created_at'],
+    fieldsProxy: { role_id: 'rel_role_id' },
+    fieldsType: { active: booleanBadge('Active', 'Inactive'), photo: { type: 'image' }, ...defaultTableConfig.fieldsType },
+    list: {
+      fields: ['photo', 'username', 'email', 'role_id', 'active'],
+      fieldsProxy: { role_id: 'rel_role_id' },
+      fieldsAlias: { photo: 'Name' },
+      fieldsType: {
+        photo: { type: 'avatar-name', props: { nameField: 'fullname', variant: 'sage' } },
+        active: booleanBadge('Active', 'Inactive'),
+      },
+    },
+  },
+  transaction: {
+    fields: ['fullname', 'username', 'email', 'password', 'role_id', 'photo', 'active'],
+    inputConfig: {
+      fullname: { type: 'text',     props: { required: true }, colSpan: 6 },
+      username: { type: 'text',     props: { required: true }, colSpan: 6 },
+      email:    { type: 'text',     props: { required: true }, colSpan: 6 },
+      password: { type: 'password', props: { placeholder: 'Leave blank to keep current' }, colSpan: 6 },
+      role_id:  { type: 'select',   props: { required: true, getAPI: 'roles', view: 'role_name' }, colSpan: 6 },
+      active:   { ...booleanRadio('Active', 'Inactive'), colSpan: 6 },
+      photo:    { type: 'image' },
+    },
+    create: {
+      inputConfig: {
+        password: { type: 'password', props: { required: true }, colSpan: 6 },
+      },
+    },
+  },
+}
+export default users
+</file>
+
+<file path="src/assets/vite.svg">
+<svg xmlns="http://www.w3.org/2000/svg" width="77" height="47" fill="none" aria-labelledby="vite-logo-title" viewBox="0 0 77 47"><title id="vite-logo-title">Vite</title><style>.parenthesis{fill:#000}@media (prefers-color-scheme:dark){.parenthesis{fill:#fff}}</style><path fill="#9135ff" d="M40.151 45.71c-.663.844-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.493c-.92 0-1.457-1.04-.92-1.788l7.479-10.471c1.07-1.498 0-3.578-1.842-3.578H15.443c-.92 0-1.456-1.04-.92-1.788l9.696-13.576c.213-.297.556-.474.92-.474h28.894c.92 0 1.456 1.04.92 1.788l-7.48 10.472c-1.07 1.497 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.087.89 1.83L40.153 45.712z"/><mask id="a" width="48" height="47" x="14" y="0" maskUnits="userSpaceOnUse" style="mask-type:alpha"><path fill="#000" d="M40.047 45.71c-.663.843-2.02.374-2.02-.699V34.708a2.26 2.26 0 0 0-2.262-2.262H24.389c-.92 0-1.457-1.04-.92-1.788l7.479-10.472c1.07-1.497 0-3.578-1.842-3.578H15.34c-.92 0-1.456-1.04-.92-1.788l9.696-13.575c.213-.297.556-.474.92-.474H53.93c.92 0 1.456 1.04.92 1.788L47.37 13.03c-1.07 1.498 0 3.578 1.842 3.578h11.376c.944 0 1.474 1.088.89 1.831L40.049 45.712z"/></mask><g mask="url(#a)"><g filter="url(#b)"><ellipse cx="5.508" cy="14.704" fill="#eee6ff" rx="5.508" ry="14.704" transform="rotate(269.814 20.96 11.29)scale(-1 1)"/></g><g filter="url(#c)"><ellipse cx="10.399" cy="29.851" fill="#eee6ff" rx="10.399" ry="29.851" transform="rotate(89.814 -16.902 -8.275)scale(1 -1)"/></g><g filter="url(#d)"><ellipse cx="5.508" cy="30.487" fill="#8900ff" rx="5.508" ry="30.487" transform="rotate(89.814 -19.197 -7.127)scale(1 -1)"/></g><g filter="url(#e)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.928 4.177)scale(1 -1)"/></g><g filter="url(#f)"><ellipse cx="5.508" cy="30.599" fill="#8900ff" rx="5.508" ry="30.599" transform="rotate(89.814 -25.738 5.52)scale(1 -1)"/></g><g filter="url(#g)"><ellipse cx="14.072" cy="22.078" fill="#eee6ff" rx="14.072" ry="22.078" transform="rotate(93.35 31.245 55.578)scale(-1 1)"/></g><g filter="url(#h)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#i)"><ellipse cx="3.47" cy="21.501" fill="#8900ff" rx="3.47" ry="21.501" transform="rotate(89.009 35.419 55.202)scale(-1 1)"/></g><g filter="url(#j)"><ellipse cx="14.592" cy="9.743" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(39.51 14.592 9.743)"/></g><g filter="url(#k)"><ellipse cx="61.728" cy="-5.321" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 61.728 -5.32)"/></g><g filter="url(#l)"><ellipse cx="55.618" cy="7.104" fill="#00c2ff" rx="5.971" ry="9.665" transform="rotate(37.892 55.618 7.104)"/></g><g filter="url(#m)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#n)"><ellipse cx="12.326" cy="39.103" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 12.326 39.103)"/></g><g filter="url(#o)"><ellipse cx="49.857" cy="30.678" fill="#8900ff" rx="4.407" ry="29.108" transform="rotate(37.892 49.857 30.678)"/></g><g filter="url(#p)"><ellipse cx="52.623" cy="33.171" fill="#00c2ff" rx="5.971" ry="15.297" transform="rotate(37.892 52.623 33.17)"/></g></g><path d="M6.919 0c-9.198 13.166-9.252 33.575 0 46.789h6.215c-9.25-13.214-9.196-33.623 0-46.789zm62.424 0h-6.215c9.198 13.166 9.252 33.575 0 46.789h6.215c9.25-13.214 9.196-33.623 0-46.789" class="parenthesis"/><defs><filter id="b" width="60.045" height="41.654" x="-5.564" y="16.92" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="c" width="90.34" height="51.437" x="-40.407" y="-6.762" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="d" width="79.355" height="29.4" x="-35.435" y="2.801" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="e" width="79.579" height="29.4" x="-30.84" y="20.8" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="f" width="79.579" height="29.4" x="-29.307" y="21.949" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="g" width="74.749" height="58.852" x="29.961" y="-17.13" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="7.659"/></filter><filter id="h" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="i" width="61.377" height="25.362" x="37.754" y="3.055" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="j" width="56.045" height="63.649" x="-13.43" y="-22.082" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="k" width="54.814" height="64.646" x="34.321" y="-37.644" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="l" width="33.541" height="35.313" x="38.847" y="-10.552" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="m" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="n" width="54.814" height="64.646" x="-15.081" y="6.78" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="o" width="54.814" height="64.646" x="22.45" y="-1.645" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter><filter id="p" width="39.409" height="43.623" x="32.919" y="11.36" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feGaussianBlur result="effect1_foregroundBlur_2002_17286" stdDeviation="4.596"/></filter></defs></svg>
+</file>
+
+<file path="src/assets/vue.svg">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="37.07" height="36" preserveAspectRatio="xMidYMid meet" viewBox="0 0 256 198"><path fill="#41B883" d="M204.8 0H256L128 220.8L0 0h97.92L128 51.2L157.44 0h47.36Z"></path><path fill="#41B883" d="m0 0l128 220.8L256 0h-51.2L128 132.48L50.56 0H0Z"></path><path fill="#35495E" d="M50.56 0L128 133.12L204.8 0h-47.36L128 51.2L97.92 0H50.56Z"></path></svg>
+</file>
+
+<file path="src/components/base/Avatar.vue">
+<script setup lang="ts">
+import {computed} from 'vue'
+
+const props = withDefaults(
+    defineProps<{
+        photoUrl?: string | null
+        name: string
+        size?: 'sm' | 'md' | 'lg'
+        variant?: 'green' | 'teal' | 'olive' | 'sage' | 'moss' | 'fern'
+    }>(),
+    { size : 'md', variant: 'green' },
+)
+
+const initials = computed(() =>
+  props.name
+    .replace(/^Dr\.\s*/i, '')   // was: /^Dr\\.s*/i  — missing \ before s, making s* match literal 's'
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map((word) => word[0]?.toUpperCase() ?? '')
+    .join(''),
+)
+
+const sizeClasses: Record<string, string> = {
+  sm: 'h-8 w-8 text-xs',
+  md: 'h-[38px] w-[38px] text-sm',  // was: w-[38] — missing 'px', Tailwind ignores unitless arbitrary values
+  lg: 'h-14 w-14 text-xl',           // was: text-x1 — digit '1' instead of letter 'l', not a valid class
+}
+
+const variantClasses: Record<string, string> = {
+    green: 'bg-gradient-to-br from-clinic-500 to-clinic-700',
+    teal: 'bg-gradient-to-br from-teal-600 to-teal-700',
+    olive: 'bg-gradient-to-br from-lime-600 to-lime-800',
+    sage: 'bg-gradient-to-br from-slate-500 to-slate-600',
+    moss: 'bg-gradient-to-br from-emerald-600 to-emerald-700',
+    fern: 'bg-gradient-to-br from-green-600 to-green-700',
+}
+</script>
+
+<template>
+    <img
+    v-if="photoUrl"
+    :src="photoUrl"
+    :alt="name"
+    class="flex-shrink-0 rounded-full object-cover"
+    :class="sizeClasses[size]"
+    />
+
+    <div
+    v-else
+    class="flex flex-shrink-0 items-center justify-center rounded-full font-semibold text-white"
+    :class="[sizeClasses[size], variantClasses[variant]]"
+    >
+    {{ initials }}
+    </div>
+</template>
+</file>
+
+<file path="src/components/base/Badge.vue">
+<script setup lang="ts">
+defineProps<{
+    variant?: 'available' | 'occupied' | 'scheduled' | 'completed' | 'cancelled' | 'next'
+}> ()
+
+const variantClasses: Record<string, string> = {
+    available: 'bg-clinic-100 text-clinic-700',
+    occupied: 'bg-warning-light text-warning',
+    scheduled: 'bg-info-light text-info',
+    completed: 'bg-success-light text-success',
+    cancelled: 'bg-danger-light text-danger',
+    next: 'bg-clinic-100 text-clinic-799 outline outline-2 outline-clinic-400 -outline-offset-1',
+}
+</script>
+<template>
+  <span
+    class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 text-[11px] font-medium"
+    :class="variantClasses[variant ?? 'available']"
+  >
+    <span class="text-[7px]">●</span>
+    <slot />
+  </span>
+</template>
+</file>
+
+<file path="src/components/composites/CRUD/CRUDCreate.vue">
+<script setup lang="ts">
+import { useRoute, useRouter } from 'vue-router'
+import { toast } from 'vue-sonner'
+import Form from '../Form.vue'
+import { defaultFormConfig } from '@/app/configs/_defaults'
+
+const props = defineProps<{ config: CRUDCompositeConfig; permissions: CRUDPermissions }>()
+const route = useRoute()
+const router = useRouter()
+
+function goBack() {
+    router.push({ name: String(route.name), query: { ...route.query, [`${props.config.name}_view`]: 'list' }})
+}
+
+const createConfig = {
+    fields: props.config.transaction?.create?.fields
+    ?? props.config.transaction?.fields
+    ?? props.config.fields
+    ?? [],
+    targetAPI: props.config.transaction?.create?.targetAPI
+    ?? props.config.transaction?.targetAPI
+    ?? props.config.modelAPI
+    ?? props.config.name,
+    fieldsAlias: {
+        ...defaultFormConfig.fieldsAlias,
+        ...props.config.transaction?.fieldsAlias,
+        ...props.config.transaction?.create?.fieldsAlias,
+    },
+    inputConfig: {
+        ...(props.config.transaction?.inputConfig ?? {}),
+        ...(props.config.transaction?.create?.inputConfig ?? {}),
+    } as InputConfig,
+    onSuccess: props.config.transaction?.create?.onSuccess,
+}
+</script>
+
+<template>
+  <div class="flex flex-col gap-3">
+    <div class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+      <button class="rounded border border-gray-300 px-3 py-1.5 text-sm text-gray-600 hover:border-gray-400" @click="goBack">← Back</button>
+      <h1 class="text-xl font-semibold text-clinic-900">Add {{ config.title }}</h1>
+    </div>
+    <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+      <Form
+        v-bind="createConfig"
+        form-type="create"
+        :on-success="createConfig.onSuccess ?? (() => { toast.success('Created successfully.'); goBack() })"
+      />
+    </div>
+  </div>
+</template>
+</file>
+
+<file path="src/components/composites/CRUD/CRUDDetail.vue">
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { toast } from 'vue-sonner'
+import services from '@/utils/services'
+import { defaultFormConfig } from '@/app/configs/_defaults'
+import { resolveFileUrl } from '@/utils/files'
+import Avatar from '@/components/base/Avatar.vue'
+import Badge from '@/components/base/Badge.vue'
+
+const props = defineProps<{ config: CRUDCompositeConfig; permissions: CRUDPermissions }>()
+const route = useRoute()
+const router = useRouter()
+const dataID = String(route.query[`${props.config.name}_id`] ?? '')
+
+const cfg = {
+  getAPI: props.config.view?.detail?.getAPI ?? props.config.view?.getAPI ?? props.config.modelAPI ?? props.config.name,
+  fields: props.config.view?.detail?.fields ?? props.config.view?.fields ?? props.config.fields ?? [],
+  fieldsAlias: { ...defaultFormConfig.fieldsAlias, ...props.config.view?.fieldsAlias, ...props.config.view?.detail?.fieldsAlias },
+  fieldsProxy: { ...props.config.view?.fieldsProxy, ...props.config.view?.detail?.fieldsProxy },
+  fieldsType:  { ...props.config.view?.fieldsType,  ...props.config.view?.detail?.fieldsType  },
+}
+
+const record = ref<Record<string, any> | null>(null)
+const loading = ref(true)
+
+onMounted(async () => {
+  try {
+    const res = await services.show(cfg.getAPI, dataID)
+    record.value = res.data
+  } catch {
+    toast.error('Failed to load record.')
+  } finally {
+    loading.value = false
+  }
+})
+
+function resolve(field: string) {
+  if (!record.value) return null
+  const proxy = cfg.fieldsProxy?.[field]
+  return proxy ? (record.value[proxy] ?? record.value[field]) : record.value[field]
+}
+
+function mapKey(v: unknown): string {
+  if (v === true || v === 1 || v === '1') return 'true'
+  if (v === false || v === 0 || v === '0') return 'false'
+  return String(v)
+}
+
+function fmtDatetime(val: any): string {
+  if (!val) return '—'
+  const d = new Date(val)
+  return isNaN(d.getTime()) ? String(val) : d.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+}
+
+function goBack() {
+  router.push({ name: String(route.name), query: { ...route.query, [`${props.config.name}_view`]: 'list' } })
+}
+function goEdit() {
+  router.push({ name: String(route.name), query: { ...route.query, [`${props.config.name}_view`]: 'update', [`${props.config.name}_id`]: dataID } })
+}
+</script>
+
+<template>
+  <div class="flex flex-col gap-3">
+    <div class="flex items-center justify-between rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+      <div class="flex items-center gap-3">
+        <button class="rounded border border-gray-300 px-3 py-1.5 text-sm text-gray-600 hover:border-gray-400" @click="goBack">← Back</button>
+        <h1 class="text-xl font-semibold text-clinic-900">{{ config.title }} Detail</h1>
+      </div>
+      <button v-if="permissions.update" class="rounded bg-clinic-700 px-4 py-2 text-sm font-medium text-white hover:bg-clinic-800" @click="goEdit">
+        Edit
+      </button>
+    </div>
+    <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+      <div v-if="loading" class="py-12 text-center text-sm text-gray-400">Loading…</div>
+      <template v-else-if="record">
+        <div v-for="field in cfg.fields" :key="field" class="flex items-start gap-4 border-b border-gray-100 px-6 py-3.5 last:border-0">
+          <span class="w-44 flex-shrink-0 text-sm font-medium text-gray-500">{{ cfg.fieldsAlias[field] ?? field }}</span>
+          <div class="flex-1 text-sm text-gray-900">
+            <!-- combined avatar + name -->
+            <div v-if="cfg.fieldsType[field]?.type === 'avatar-name'" class="flex items-center gap-2">
+              <Avatar :photo-url="resolveFileUrl(record[field])" :name="record[cfg.fieldsType[field].props?.nameField] ?? ''" size="sm" />
+              <span class="font-medium">{{ record[cfg.fieldsType[field].props?.nameField] }}</span>
+            </div>
+            <!-- badge -->
+            <Badge v-else-if="cfg.fieldsType[field]?.type === 'badge'" :variant="cfg.fieldsType[field].props?.map?.[mapKey(resolve(field))]?.variant">
+              {{ cfg.fieldsType[field].props?.map?.[mapKey(resolve(field))]?.label ?? resolve(field) }}
+            </Badge>
+            <!-- image -->
+            <img v-else-if="cfg.fieldsType[field]?.type === 'image' && record[field]" :src="resolveFileUrl(record[field]) ?? ''" class="h-20 w-20 rounded-lg object-cover" />
+            <!-- datetime -->
+            <span v-else-if="cfg.fieldsType[field]?.type === 'datetime'" class="text-gray-500">{{ fmtDatetime(resolve(field)) }}</span>
+            <!-- default -->
+            <span v-else>{{ resolve(field) ?? '—' }}</span>
+          </div>
+        </div>
+      </template>
+      <div v-else class="py-12 text-center text-sm text-gray-400">Record not found.</div>
+    </div>
+  </div>
+</template>
+</file>
+
+<file path="src/components/composites/CRUD/CRUDList.vue">
+<script setup lang="ts">
+import { ref, computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import Table from '../Table.vue'
+import SearchBox from '../SearchBox.vue'
+import { defaultTableConfig } from '@/app/configs/_defaults'
+import { onDelete } from '@/app/actions/CRUD/CRUDList'
+
+const props = defineProps<{
+  config: CRUDCompositeConfig
+  permissions: CRUDPermissions
+}>()
+
+const route = useRoute()
+const router = useRouter()
+const tableRef = ref<InstanceType<typeof Table>>()
+const search = ref('')
+
+const listConfig = computed(() => ({
+  uid: props.config.view?.list?.uid ?? 'id',
+  getAPI: props.config.view?.list?.getAPI || props.config.view?.getAPI || props.config.modelAPI || props.config.name,
+  fields: props.config.view?.list?.fields || props.config.view?.fields || props.config.fields || [],
+  fieldsAlias: {
+    ...defaultTableConfig.fieldsAlias,
+    ...(props.config.view?.list?.fieldsAlias || props.config.view?.fieldsAlias || props.config.fieldsAlias),
+  },
+  fieldsProxy: props.config.view?.list?.fieldsProxy || props.config.view?.fieldsProxy || props.config.fieldsProxy,
+  fieldsType: {
+    ...defaultTableConfig.fieldsType,
+    ...(props.config.view?.list?.fieldsType || props.config.view?.fieldsType || props.config.fieldsType),
+  },
+}))
+
+function openCreate() {
+  router.push({ name: String(route.name), query: { ...route.query, [`${props.config.name}_view`]: 'create' } })
+}
+function openDetail(row: Record<string, any>) {
+  router.push({
+    name: String(route.name),
+    query: { ...route.query, [`${props.config.name}_view`]: 'detail', [`${props.config.name}_id`]: row[listConfig.value.uid] },
+  })
+}
+function openUpdate(row: Record<string, any>) {
+  router.push({
+    name: String(route.name),
+    query: { ...route.query, [`${props.config.name}_view`]: 'update', [`${props.config.name}_id`]: row[listConfig.value.uid] },
+  })
+}
+async function handleDelete(row: Record<string, any>) {
+  if (!confirm(`Delete this ${props.config.title?.toLowerCase() ?? 'record'}?`)) return
+  await onDelete(listConfig.value.getAPI, row[listConfig.value.uid])
+  tableRef.value?.refresh()
+}
+</script>
+
+<template>
+  <div class="flex flex-col gap-3">
+    <div class="flex items-center justify-between gap-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+      <div class="flex items-center gap-4">
+        <h1 class="text-xl font-semibold text-clinic-900">{{ config.title ?? route.meta.title }}</h1>
+        <SearchBox v-model="search" />
+      </div>
+      <button
+        v-if="(config.actions?.create ?? true) && permissions.create"
+        class="rounded bg-clinic-700 px-4 py-2 text-sm font-medium text-white hover:bg-clinic-800"
+        @click="openCreate"
+      >
+        + Add {{ config.title }}
+      </button>
+    </div>
+
+    <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+      <Table ref="tableRef" v-bind="listConfig" :search-parameters="{ search }">
+        <template #row-actions="{ row }">
+          <div class="flex items-center gap-2">
+            <button
+              v-if="(config.actions?.detail ?? true) && permissions.detail"
+              class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900"
+              @click="openDetail(row)"
+            >
+              View
+            </button>
+            <button
+              v-if="(config.actions?.update ?? true) && permissions.update"
+              class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900"
+              @click="openUpdate(row)"
+            >
+              Edit
+            </button>
+            <button
+              v-if="(config.actions?.delete ?? true) && permissions.delete"
+              class="rounded border border-gray-300 px-2 py-1 text-xs text-danger hover:border-danger"
+              @click="handleDelete(row)"
+            >
+              Delete
+            </button>
+          </div>
+        </template>
+      </Table>
+    </div>
+  </div>
+</template>
+</file>
+
+<file path="src/components/composites/CRUD/CRUDUpdate.vue">
+<script setup lang="ts">
+import { useRoute, useRouter } from 'vue-router'
+import { toast } from 'vue-sonner'
+import Form from '../Form.vue'
+import { defaultFormConfig } from '@/app/configs/_defaults'
+
+const props = defineProps<{ config: CRUDCompositeConfig; permissions: CRUDPermissions }>()
+const route = useRoute()
+const router = useRouter()
+
+const dataID = String(route.query[`${props.config.name}_id`] ?? '')
+
+function goBack() {
+  router.push({ name: String(route.name), query: { ...route.query, [`${props.config.name}_view`]: 'list' } })
+}
+
+const updateConfig = {
+  fields: props.config.transaction?.update?.fields
+    ?? props.config.transaction?.fields
+    ?? props.config.fields
+    ?? [],
+  getAPI: props.config.transaction?.update?.getAPI
+    ?? props.config.modelAPI
+    ?? props.config.name,
+  targetAPI: props.config.transaction?.update?.targetAPI
+    ?? props.config.transaction?.targetAPI
+    ?? props.config.modelAPI
+    ?? props.config.name,
+  fieldsAlias: {
+    ...defaultFormConfig.fieldsAlias,
+    ...props.config.transaction?.fieldsAlias,
+    ...props.config.transaction?.update?.fieldsAlias,
+  },
+  inputConfig: {
+    ...(props.config.transaction?.inputConfig ?? {}),
+    ...(props.config.transaction?.update?.inputConfig ?? {}),
+  } as InputConfig,
+}
+</script>
+
+<template>
+  <div class="flex flex-col gap-3">
+    <div class="flex items-center gap-3 rounded-lg border border-gray-200 bg-white p-4 shadow-sm">
+      <button class="rounded border border-gray-300 px-3 py-1.5 text-sm text-gray-600 hover:border-gray-400" @click="goBack">← Back</button>
+      <h1 class="text-xl font-semibold text-clinic-900">Edit {{ config.title }}</h1>
+    </div>
+    <div class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+      <Form
+        v-bind="updateConfig"
+        form-type="update"
+        :data-i-d="dataID"
+        :on-success="() => { toast.success('Updated successfully.'); goBack() }"
+      />
+    </div>
+  </div>
+</template>
+</file>
+
+<file path="src/components/composites/CRUDComposite.vue">
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { permissions } from '@/stores/permissions'
+import CRUDList from './CRUD/CRUDList.vue'
+import CRUDDetail from './CRUD/CRUDDetail.vue'
+import CRUDCreate from './CRUD/CRUDCreate.vue'
+import CRUDUpdate from './CRUD/CRUDUpdate.vue'
+
+const props = defineProps<{ config: CRUDCompositeConfig }>()
+const route = useRoute()
+
+const permissionKey = props.config.permission || props.config.name || props.config.modelAPI
+
+const actionsPermission: CRUDPermissions = {
+  view: permissions().has(`view-${permissionKey}`),
+  lookup: permissions().has(`lookup-${permissionKey}`),
+  detail: permissions().has(`show-${permissionKey}`),
+  create: permissions().has(`create-${permissionKey}`),
+  update: permissions().has(`update-${permissionKey}`),
+  delete: permissions().has(`delete-${permissionKey}`),
+}
+
+const currentView = computed<'list' | 'detail' | 'create' | 'update'>(() => {
+  const v = route.query[`${props.config.name}_view`]
+  return ((Array.isArray(v) ? v[0] : v) as any) || 'list'
+})
+</script>
+
+<template>
+  <div v-if="actionsPermission.view" class="flex flex-col gap-4">
+    <CRUDList v-if="currentView === 'list'" :config="config" :permissions="actionsPermission" />
+    <CRUDDetail v-else-if="currentView === 'detail'" :config="config" :permissions="actionsPermission" />
+    <CRUDCreate v-else-if="currentView === 'create'" :config="config" :permissions="actionsPermission" />
+    <CRUDUpdate v-else-if="currentView === 'update'" :config="config" :permissions="actionsPermission" />
+  </div>
+  <div v-else class="p-6 text-sm text-gray-500">You don't have permission to view this section.</div>
+</template>
+</file>
+
+<file path="src/components/composites/Form.vue">
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import { toast } from 'vue-sonner'
+import { componentTypeMap, defaultFormGetData } from '@/app/actions/Form'
+import { defaultFormConfig } from '@/app/configs/_defaults'
+import services from '@/utils/services'
+
+const props = defineProps<{
+  fields: string[]
+  fieldsAlias?: Record<string, string>
+  inputConfig: InputConfig
+  formType?: 'create' | 'update'
+  targetAPI: string
+  getAPI?: string
+  dataID?: string
+  onSuccess?: () => void
+}>()
+
+const mergedAlias = { ...defaultFormConfig.fieldsAlias, ...props.fieldsAlias }
+const formData = ref<Record<string, any>>({})
+const formError = ref<Record<string, string>>({})
+const loading = ref({ get: props.formType === 'update', post: false })
+
+onMounted(async () => {
+  if (props.formType === 'update' && props.getAPI && props.dataID) {
+    try {
+      // Load the existing record so inputs have their current values.
+      // Because services.show() calls Get.php which uses raw DB::table(),
+      // boolean fields arrive as 1/0 — RadioInput handles normalizing those.
+      formData.value = await defaultFormGetData(props.getAPI, props.dataID)
+    } catch {
+      toast.error('Failed to load record.')
+    } finally {
+      loading.value.get = false
+    }
+  } else {
+    loading.value.get = false
+  }
+})
+
+function validate(): boolean {
+  formError.value = {}
+  for (const field of props.fields) {
+    const cfg = props.inputConfig[field]
+    if (cfg?.props?.required) {
+      const val = formData.value[field]
+      if (val == null || val === '') {
+        formError.value[field] = 'This field is required.'
+      }
+    }
+  }
+  return Object.keys(formError.value).length === 0
+}
+
+async function submit() {
+  if (!validate()) {
+    toast.error('Please fill in all required fields.')
+    return
+  }
+  loading.value.post = true
+  try {
+    if (props.formType === 'update') {
+      // formData already contains `id` because defaultFormGetData fetches
+      // the full record from services.show(), which includes id in FIELD_VIEW.
+      // We send the whole formData so the backend gets { id, ...fields }.
+      await services.update(props.targetAPI, formData.value)
+    } else {
+      await services.create(props.targetAPI, formData.value)
+    }
+    props.onSuccess?.()
+  } catch (err: any) {
+    const apiErrors = err.response?.data?.errors
+    if (apiErrors) {
+      // Map Laravel's { field: ['message'] } to { field: 'message' }
+      formError.value = Object.fromEntries(
+        Object.entries(apiErrors).map(([k, v]) => [k, (v as string[]).join(', ')]),
+      )
+      toast.error('Please correct the highlighted fields.')
+    } else {
+      toast.error(err.response?.data?.message ?? 'Submit failed.')
+    }
+  } finally {
+    loading.value.post = false
+  }
+}
+</script>
+
+<template>
+  <div v-if="loading.get" class="py-12 text-center text-sm text-gray-400">Loading…</div>
+  <form v-else class="grid w-full grid-cols-12 gap-x-4 gap-y-5" @submit.prevent="submit">
+    <template v-for="field in fields" :key="field">
+      <div
+        class="flex flex-col"
+        :style="{ gridColumn: `span ${inputConfig[field]?.colSpan ?? 12} / span ${inputConfig[field]?.colSpan ?? 12}` }"
+      >
+        <component
+          v-if="componentTypeMap[inputConfig[field]?.type]"
+          :is="componentTypeMap[inputConfig[field].type]"
+          v-model="formData[field]"
+          :label="mergedAlias[field] ?? field"
+          :error="formError[field]"
+          v-bind="inputConfig[field]?.props ?? {}"
+        />
+        <div v-else class="rounded border border-warning bg-warning-light px-3 py-2 text-xs text-warning">
+          No inputConfig entry for "{{ field }}"
+        </div>
+      </div>
+    </template>
+
+    <div class="col-span-12 flex items-center gap-3 border-t border-gray-200 pt-5 mt-1">
+      <button
+        type="submit"
+        :disabled="loading.post"
+        class="rounded bg-clinic-700 px-5 py-2 text-sm font-medium text-white hover:bg-clinic-800 disabled:opacity-50"
+      >
+        {{ loading.post ? 'Saving…' : formType === 'create' ? 'Create' : 'Save Changes' }}
+      </button>
+    </div>
+  </form>
+</template>
+</file>
+
+<file path="src/components/composites/Pagination.vue">
+<script setup lang="ts">
+defineProps<{ page: number; lastPage: number; total: number }>()
+const emit = defineEmits<{ (e: 'update:page', page: number): void }>()
+</script>
+
+<template>
+  <div class="flex items-center justify-between border-t border-gray-200 px-4 py-2.5 text-sm text-gray-500">
+    <span>{{ total }} total · page {{ page }} of {{ lastPage }}</span>
+    <div class="flex gap-1">
+      <button
+        class="rounded border border-gray-300 px-2.5 py-1 text-xs disabled:cursor-not-allowed disabled:opacity-40"
+        :disabled="page <= 1"
+        @click="emit('update:page', page - 1)"
+      >
+        Prev
+      </button>
+      <button
+        class="rounded border border-gray-300 px-2.5 py-1 text-xs disabled:cursor-not-allowed disabled:opacity-40"
+        :disabled="page >= lastPage"
+        @click="emit('update:page', page + 1)"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+</template>
+</file>
+
+<file path="src/components/composites/SearchBox.vue">
+<script setup lang="ts">
+import { ref, watch } from 'vue'
+
+const model = defineModel<string>({ default: '' })
+const localValue = ref(model.value)
+let debounceTimer: ReturnType<typeof setTimeout>
+
+watch(localValue, (val) => {
+  clearTimeout(debounceTimer)
+  debounceTimer = setTimeout(() => (model.value = val), 350)
+})
+</script>
+
+<template>
+  <div class="relative">
+    <input
+      v-model="localValue"
+      type="text"
+      placeholder="Search…"
+      class="w-56 rounded border border-gray-300 py-1.5 pl-8 pr-3 text-sm focus:border-clinic-500 focus:outline-none"
+    />
+    <span class="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-400">⌕</span>
+  </div>
+</template>
+</file>
+
+<file path="src/components/composites/Table.vue">
+<script setup lang="ts">
+import { ref, watch, onMounted } from 'vue'
+import services from '@/utils/services'
+import { resolveFileUrl } from '@/utils/files'
+import Avatar from '@/components/base/Avatar.vue'
+import Badge from '@/components/base/Badge.vue'
+import Pagination from './Pagination.vue'
+
+const props = defineProps<{
+  getAPI: string
+  fields: string[]
+  fieldsAlias?: Record<string, string>
+  fieldsProxy?: Record<string, string>
+  fieldsType?: Record<string, FieldTypeConfig>
+  searchParameters?: Record<string, any>
+  uid?: string
+}>()
+
+const rows = ref<Record<string, any>[]>([])
+const loading = ref(true)
+const page = ref(1)
+const total = ref(0)
+const lastPage = ref(1)
+
+async function load() {
+  loading.value = true
+  try {
+    const res = await services.list(props.getAPI, {
+      page: page.value,
+      limit: 10,
+      ...props.searchParameters,
+    })
+    rows.value = res.data
+    total.value = res.total
+    lastPage.value = res.last_page
+  } finally {
+    loading.value = false
+  }
+}
+
+function resolve(row: Record<string, any>, field: string) {
+  const proxyField = props.fieldsProxy?.[field]
+  return proxyField ? (row[proxyField] ?? row[field]) : row[field]
+}
+
+function fieldType(field: string) {
+  return props.fieldsType?.[field]?.type
+}
+
+function fieldTypeProps(field: string) {
+  return props.fieldsType?.[field]?.props ?? {}
+}
+
+// Normalizes a cell's raw value into the string key a badge's `map` is keyed
+// by. Handles the common case of a boolean column arriving as 1/0 from a raw
+// query-builder response (see Get.php — it bypasses Eloquent's $casts), while
+// leaving genuine string-enum values (e.g. an appointment status) untouched.
+function mapKey(value: unknown): string {
+  if (value === true || value === 1 || value === '1') return 'true'
+  if (value === false || value === 0 || value === '0') return 'false'
+  return String(value)
+}
+
+function formatDate(value: string | null | undefined) {
+  if (!value) return '—'
+  return new Date(value).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+}
+
+watch(
+  () => props.searchParameters,
+  () => {
+    page.value = 1
+    load()
+  },
+  { deep: true },
+)
+
+watch(page, load)
+onMounted(load)
+
+defineExpose({ refresh: load })
+</script>
+
+<template>
+  <div class="flex flex-col">
+    <div class="overflow-x-auto">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="border-b border-gray-200 bg-gray-50">
+            <th
+              v-for="field in fields"
+              :key="field"
+              class="whitespace-nowrap px-4 py-2.5 text-left text-[10.5px] font-semibold uppercase tracking-wide text-gray-500"
+            >
+              {{ fieldsAlias?.[field] ?? field }}
+            </th>
+            <th class="px-4 py-2.5 text-left text-[10.5px] font-semibold uppercase tracking-wide text-gray-500">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-if="loading">
+            <td :colspan="fields.length + 1" class="px-4 py-8 text-center text-sm text-gray-400">Loading…</td>
+          </tr>
+          <tr v-else-if="!rows.length">
+            <td :colspan="fields.length + 1" class="px-4 py-8 text-center text-sm text-gray-400">No data found.</td>
+          </tr>
+          <tr v-for="row in rows" :key="row[uid ?? 'id']" class="border-b border-gray-100 last:border-0 hover:bg-gray-50">
+            <td v-for="field in fields" :key="field" class="px-4 py-2.5 text-sm">
+              <div v-if="fieldType(field) === 'avatar-name'" class="flex items-center gap-2.5">
+                <Avatar
+                  :photo-url="resolveFileUrl(row[field])"
+                  :name="row[fieldTypeProps(field).nameField] ?? ''"
+                  :variant="fieldTypeProps(field).variant"
+                  size="sm"
+                />
+                <span class="font-medium text-gray-900">{{ row[fieldTypeProps(field).nameField] }}</span>
+              </div>
+              <Badge
+                v-else-if="fieldType(field) === 'badge'"
+                :variant="fieldTypeProps(field).map?.[mapKey(resolve(row, field))]?.variant"
+              >
+                {{ fieldTypeProps(field).map?.[mapKey(resolve(row, field))]?.label ?? resolve(row, field) }}
+              </Badge>
+              <span v-else-if="fieldType(field) === 'datetime'" class="text-gray-500">{{ formatDate(resolve(row, field)) }}</span>
+              <span v-else>{{ resolve(row, field) ?? '—' }}</span>
+            </td>
+            <td class="px-4 py-2.5">
+              <slot name="row-actions" :row="row" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <Pagination :page="page" :last-page="lastPage" :total="total" @update:page="(p) => (page = p)" />
+  </div>
+</template>
+</file>
+
+<file path="src/components/HelloWorld.vue">
+<script setup lang="ts">
+import { ref } from 'vue'
+import viteLogo from '../assets/vite.svg'
+import heroImg from '../assets/hero.png'
+import vueLogo from '../assets/vue.svg'
+
+const count = ref(0)
+</script>
+
+<template>
+  <section id="center">
+    <div class="hero">
+      <img :src="heroImg" class="base" width="170" height="179" alt="" />
+      <img :src="vueLogo" class="framework" alt="Vue logo" />
+      <img :src="viteLogo" class="vite" alt="Vite logo" />
+    </div>
+    <div>
+      <h1>Get started</h1>
+      <p>Edit <code>src/App.vue</code> and save to test <code>HMR</code></p>
+    </div>
+    <button type="button" class="counter" @click="count++">
+      Count is {{ count }}
+    </button>
+  </section>
+
+  <div class="ticks"></div>
+
+  <section id="next-steps">
+    <div id="docs">
+      <svg class="icon" role="presentation" aria-hidden="true">
+        <use href="/icons.svg#documentation-icon"></use>
+      </svg>
+      <h2>Documentation</h2>
+      <p>Your questions, answered</p>
+      <ul>
+        <li>
+          <a href="https://vite.dev/" target="_blank">
+            <img class="logo" :src="viteLogo" alt="" />
+            Explore Vite
+          </a>
+        </li>
+        <li>
+          <a href="https://vuejs.org/" target="_blank">
+            <img class="button-icon" :src="vueLogo" alt="" />
+            Learn more
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div id="social">
+      <svg class="icon" role="presentation" aria-hidden="true">
+        <use href="/icons.svg#social-icon"></use>
+      </svg>
+      <h2>Connect with us</h2>
+      <p>Join the Vite community</p>
+      <ul>
+        <li>
+          <a href="https://github.com/vitejs/vite" target="_blank">
+            <svg class="button-icon" role="presentation" aria-hidden="true">
+              <use href="/icons.svg#github-icon"></use>
+            </svg>
+            GitHub
+          </a>
+        </li>
+        <li>
+          <a href="https://chat.vite.dev/" target="_blank">
+            <svg class="button-icon" role="presentation" aria-hidden="true">
+              <use href="/icons.svg#discord-icon"></use>
+            </svg>
+            Discord
+          </a>
+        </li>
+        <li>
+          <a href="https://x.com/vite_js" target="_blank">
+            <svg class="button-icon" role="presentation" aria-hidden="true">
+              <use href="/icons.svg#x-icon"></use>
+            </svg>
+            X.com
+          </a>
+        </li>
+        <li>
+          <a href="https://bsky.app/profile/vite.dev" target="_blank">
+            <svg class="button-icon" role="presentation" aria-hidden="true">
+              <use href="/icons.svg#bluesky-icon"></use>
+            </svg>
+            Bluesky
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="ticks"></div>
+  <section id="spacer"></section>
+</template>
+</file>
+
+<file path="src/components/inputs/BaseInput.vue">
+
+</file>
+
+<file path="src/components/inputs/DateInput.vue">
+<script setup lang="ts">
+import BaseInput from './BaseInput.vue'
+
+defineProps<{
+    label?: string; required?: boolean; disabled?: boolean; error?: string
+}>()
+
+const model = defineModel<string>()
+</script>
+
+<template>
+  <BaseInput :label="label" :required="required" :error="error">
+    <input
+      v-model="model"
+      type="date"
+      :disabled="disabled"
+      class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none disabled:bg-gray-100"
+      :class="{ 'border-danger': error }"
+    />
+  </BaseInput>
+</template>
+</file>
+
+<file path="src/components/inputs/ImageInput.vue">
+<script setup lang="ts">
+import {ref, watch} from 'vue'
+import BaseInput from './BaseInput.vue'
+import { uploadTmp } from '@/utils/upload'
+import { resolveFileUrl } from '@/utils/files'
+
+defineProps<{ label?: string; required?: boolean; disabled?: boolean; error?: string }>()
+
+const model = defineModel<string | null>()
+const previewUrl = ref<string | null>()
+const uploading = ref(false)
+const uploadError = ref('')
+
+watch(model, (val) => {
+    if (val && !previewUrl.value) {
+        previewUrl.value = resolveFileUrl(val)
+    }
+}, { immediate: true })
+
+async function onFileChange(e: Event) {
+    const file = (e.target as HTMLInputElement).files?.[0]
+    if (!file) return
+    uploading.value = true
+    uploadError.value = ''
+    try {
+        const res = await uploadTmp(file)
+        model.value = res.field_value
+        previewUrl.value = res.url
+    } catch (err: any){
+        uploadError.value = err.response?.data?.message ?? 'Upload failed.'
+    } finally {
+        uploading.value = false
+    }
+}
+
+function remove() {
+    model.value = null
+    previewUrl.value = null
+}
+</script>
+
+<template>
+  <BaseInput :label="label" :required="required" :error="error || uploadError">
+    <div class="flex items-start gap-4">
+      <div class="flex h-20 w-20 flex-shrink-0 items-center justify-center overflow-hidden rounded-lg border border-gray-200 bg-gray-50 text-xs text-gray-400">
+        <img v-if="previewUrl" :src="previewUrl" alt="preview" class="h-full w-full object-cover" />
+        <span v-else>No photo</span>
+      </div>
+      <div class="flex flex-col gap-2 pt-1">
+        <label class="cursor-pointer rounded border border-gray-300 px-3 py-1.5 text-sm text-gray-700 hover:border-gray-400"
+          :class="{ 'pointer-events-none opacity-50': disabled || uploading }">
+          {{ uploading ? 'Uploading…' : 'Choose file' }}
+          <input type="file" accept="image/*" class="sr-only" :disabled="disabled || uploading" @change="onFileChange" />
+        </label>
+        <button v-if="previewUrl" type="button" class="text-left text-xs text-danger hover:underline" @click="remove">
+          Remove
+        </button>
+        <p class="text-xs text-gray-400">JPG, PNG · max 5 MB</p>
+      </div>
+    </div>
+  </BaseInput>
+</template>
+</file>
+
+<file path="src/components/inputs/NumberInput.vue">
+<script setup lang="ts">
+import BaseInput from './BaseInput.vue'
+
+defineProps<{
+    label?: string; required?: boolean; disabled?: boolean
+    error?: string; placeholder?: string; min?: number; max?: number
+}>()
+const model = defineModel<number>()
+</script>
+
+<template>
+  <BaseInput :label="label" :required="required" :error="error">
+    <input
+      v-model.number="model"
+      type="number"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :min="min" :max="max"
+      class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none disabled:bg-gray-100"
+      :class="{ 'border-danger': error }"
+    />
+  </BaseInput>
+</template>
+</file>
+
+<file path="src/components/inputs/PasswordInput.vue">
+<script setup lang="ts">
+import {ref} from 'vue'
+import BaseInput from './BaseInput.vue'
+
+defineProps<{
+    label?: string; required?: boolean; disabled?: boolean; error?: string; placeholder?: string
+}>()
+
+const model = defineModel<string>()
+const show = ref(false)
+</script>
+
+<template>
+  <BaseInput :label="label" :required="required" :error="error">
+    <div class="relative">
+      <input
+        v-model="model"
+        :type="show ? 'text' : 'password'"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        class="w-full rounded border border-gray-300 px-3 py-2 pr-14 text-sm focus:border-clinic-500 focus:outline-none disabled:bg-gray-100"
+        :class="{ 'border-danger': error }"
+      />
+      <button
+        type="button"
+        tabindex="-1"
+        class="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-500 hover:text-gray-800"
+        @click="show = !show"
+      >
+        {{ show ? 'Hide' : 'Show' }}
+      </button>
+    </div>
+  </BaseInput>
+</template>
+</file>
+
+<file path="src/components/inputs/RadioInput.vue">
+<script setup lang="ts">
+import {computed} from 'vue'
+import BaseInput from './BaseInput.vue'
+
+const props = defineProps<{
+  label?: string; required?: boolean; disabled?: boolean; error?: string
+  data: Array<{ id: any; name: string }>
+}>()
+
+const model = defineModel<any>()
+    function normalize(val: any): any {
+        if ( props.data.every(d => typeof d.id === 'boolean')) {
+            if (val === 1 || val === '1' || val === 'true') return true
+            if (val === 0 || val === 'o' || val === 'false') return false
+        }
+        return val
+    }
+
+    const normalizedModel = computed({
+        get: () => normalize(model.value),
+        set: (val: any) => {model.value = val },
+    })
+
+</script>
+
+<template>
+  <BaseInput :label="label" :required="required" :error="error">
+    <div class="flex flex-wrap gap-5 py-1">
+      <label
+        v-for="opt in data"
+        :key="String(opt.id)"
+        class="flex cursor-pointer items-center gap-2 text-sm"
+        :class="{ 'pointer-events-none opacity-50': disabled }"
+      >
+        <input
+          v-model="normalizedModel"
+          type="radio"
+          :value="opt.id"
+          class="accent-clinic-600"
+        />
+        {{ opt.name }}
+      </label>
+    </div>
+  </BaseInput>
+</template>
+</file>
+
+<file path="src/components/inputs/SelectInput.vue">
+<script setup lang="ts">
+import { ref, computed, onMounted } from 'vue'
+import BaseInput from './BaseInput.vue'
+import services from '@/utils/services'
+
+const props = withDefaults(
+  defineProps<{
+    label?: string; required?: boolean; disabled?: boolean; error?: string
+    placeholder?: string
+    data?: Array<Record<string, any>>
+    getAPI?: string
+    pick?: string
+    view?: string
+    searchParameters?: Record<string, any>
+  }>(),
+  { pick: 'id', view: 'name', placeholder: '— Select —' },
+)
+
+const model = defineModel<any>()
+const options = ref<Record<string, any>[]>([])
+const loading = ref(false)
+
+async function loadOptions() {
+  if (props.getAPI) {
+    loading.value = true
+    const res = await services.dataset(props.getAPI, { limit: 200, ...props.searchParameters })
+    options.value = res.data
+    loading.value = false
+  } else if (props.data) {
+    options.value = props.data
+  }
+}
+
+// Native <select> v-model compares by string equality.
+// Normalize the model value to string for the binding, then
+// restore the original type (integer id) on change.
+const normalized = computed({
+  get: () => (model.value == null ? '' : String(model.value)),
+  set: (val: string) => {
+    if (val === '') { model.value = null; return }
+    const match = options.value.find(o => String(o[props.pick]) === val)
+    // Prefer the matched option's original typed id over a raw string
+    model.value = match ? match[props.pick] : val
+  },
+})
+
+onMounted(loadOptions)
+</script>
+
+<template>
+  <BaseInput :label="label" :required="required" :error="error">
+    <select
+      v-model="normalized"
+      :disabled="disabled || loading"
+      class="w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none disabled:bg-gray-100"
+      :class="{ 'border-danger': error }"
+    >
+      <option value="">{{ loading ? 'Loading…' : placeholder }}</option>
+      <option v-for="opt in options" :key="String(opt[pick])" :value="String(opt[pick])">
+        {{ opt[view] }}
+      </option>
+    </select>
+  </BaseInput>
+</template>
+</file>
+
+<file path="src/components/inputs/TextareaInput.vue">
+<script setup lang="ts">
+import BaseInput from './BaseInput.vue'
+
+withDefaults(
+    defineProps<{
+        label?: string; required?: boolean; disabled?: boolean
+        error?: string; placeholder?: string; rows?: number
+    }>(),
+    { rows: 3},
+)
+const model = defineModel<string>()
+</script>
+
+<template>
+  <BaseInput :label="label" :required="required" :error="error">
+    <textarea
+      v-model="model"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :rows="rows"
+      class="w-full resize-y rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none disabled:bg-gray-100"
+      :class="{ 'border-danger': error }"
+    />
+  </BaseInput>
+</template>
+</file>
+
+<file path="src/components/inputs/TextInput.vue">
+<script setup lang="ts">
+import BaseInput from './BaseInput.vue'
+
+const props = withDefaults(
+  defineProps<{
+    label?: string; required?: boolean; disabled?: boolean
+    error?: string; placeholder?: string; type?: string
+  }>(),
+  { type: 'text' },
+)
+const model = defineModel<string>()
+</script>
+
+<template>
+  <BaseInput :label="props.label" :required="props.required" :error="props.error">
+    <input
+      v-model="model"
+      :type="props.type"
+      :placeholder="props.placeholder"
+      :disabled="props.disabled"
+      class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none disabled:bg-gray-100 disabled:text-gray-500"
+      :class="{ 'border-danger': props.error }"
+    />
+  </BaseInput>
+</template>
+</file>
+
+<file path="src/components/layout/Sidebar.vue">
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute, useRouter, RouterLink } from 'vue-router'
+import { toast } from 'vue-sonner'
+import menu from '@/menu'
+import { auth } from '@/stores/auth'
+import { resolveFileUrl } from '@/utils/files'
+import Avatar from '@/components/base/Avatar.vue'
+
+const route = useRoute()
+const router = useRouter()
+const authStore = auth()
+
+// Active detection: the route name in Vue Router is exactly the submodule.name
+// string we set when building routes, so a strict equality check is sufficient.
+// We don't need to parse the path.
+function isActive(routeName: string): boolean {
+  return route.name === routeName
+}
+
+async function handleLogout() {
+  await authStore.logout()
+  toast.success('Logged out.')
+  router.push({ name: 'login' })
+}
+
+const userPhotoUrl = computed(() => resolveFileUrl(authStore.user?.photo ?? null))
+</script>
+
+<template>
+  <aside class="fixed bottom-0 left-0 top-0 z-50 flex w-[252px] flex-col bg-clinic-800">
+
+    <!-- Logo -->
+    <div class="border-b border-white/[0.08] px-5 pb-[18px] pt-[22px]">
+      <div class="flex items-center gap-2.5">
+        <div class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-clinic-400 text-[17px] shadow-[0_2px_8px_rgba(0,0,0,0.2)]">
+          <i class="ri-hospital-line text-white" />
+        </div>
+        <span class="font-display text-[19px] font-semibold tracking-[-0.2px] text-white">
+          Clinic<em class="text-clinic-300 not-italic">App</em>
+        </span>
+      </div>
+      <div class="mt-1 pl-[46px] text-[10px] font-medium uppercase tracking-[1.8px] text-clinic-300">
+        Admin Panel
+      </div>
+    </div>
+
+    <!-- Nav -->
+    <nav class="flex-1 overflow-y-auto px-2.5 py-3.5">
+      <template v-for="module in menu" :key="module.name">
+
+        <!-- Section label -->
+        <div class="px-3 pb-1.5 pt-3.5 text-[9.5px] font-semibold uppercase tracking-[1.6px] text-white/30">
+          {{ module.title }}
+        </div>
+
+        <!-- Nav items -->
+        <RouterLink
+          v-for="submodule in module.routes"
+          :key="submodule.name"
+          :to="`/${module.name}/${submodule.name}`"
+          class="mb-px flex items-center gap-2.5 rounded-lg px-3 py-[9px] text-[13.5px] transition-all duration-150"
+          :class="isActive(submodule.name)
+            ? 'bg-clinic-500 font-medium text-white shadow-[0_2px_8px_rgba(0,0,0,0.15)]'
+            : 'font-normal text-white/60 hover:bg-white/[0.08] hover:text-white'"
+        >
+          <i :class="submodule.icon" class="w-5 flex-shrink-0 text-center text-[15px]" />
+          {{ submodule.title }}
+        </RouterLink>
+
+      </template>
+    </nav>
+
+    <!-- Footer: user profile + logout -->
+    <div class="border-t border-white/[0.08] p-2.5">
+
+      <!-- Profile row -->
+      <div class="flex items-center gap-2.5 rounded-lg px-3 py-[9px]">
+        <Avatar
+          :photo-url="userPhotoUrl"
+          :name="authStore.user?.fullname ?? 'User'"
+          variant="green"
+          size="sm"
+        />
+        <div class="min-w-0 flex-1">
+          <div class="truncate text-[13px] font-medium text-white">
+            {{ authStore.user?.fullname ?? '—' }}
+          </div>
+          <div class="text-[11px] text-white/45">
+            {{ authStore.user?.username ?? '' }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Logout -->
+      <button
+        class="mt-0.5 flex w-full items-center gap-2.5 rounded-lg px-3 py-[9px] text-[13.5px] text-white/60 transition-all duration-150 hover:bg-white/[0.08] hover:text-white"
+        @click="handleLogout"
+      >
+        <i class="ri-logout-box-r-line w-5 flex-shrink-0 text-center text-[15px]" />
+        Log out
+      </button>
+
+    </div>
+  </aside>
+</template>
+</file>
+
+<file path="src/layouts/Authenticated.vue">
+<script setup lang="ts">
+import Sidebar from '@/components/layout/Sidebar.vue'
+</script>
+
+<template>
+  <div class="flex min-h-screen bg-gray-50">
+    <Sidebar />
+    <main class="ml-[252px] min-h-screen flex-1 p-8">
+      <RouterView />
+    </main>
+  </div>
+</template>
+</file>
+
+<file path="src/main.ts">
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+import router from './router'
+import CRUDComposite from './components/composites/CRUDComposite.vue'
+import './style.css'
+
+const app = createApp(App)
+app.use(createPinia())
+app.use(router)
+app.component('CRUDComposite', CRUDComposite)
+app.mount('#app')
+</file>
+
+<file path="src/menu.ts">
+const menu: Modules = [
+  {
+    name: 'clinical',
+    title: 'Clinical Management',
+    icon: 'ri-stethoscope-line',
+    description: 'Doctors, patients, appointments, rooms, and medical records.',
+    routes: [
+      { name: 'doctors',        title: 'Doctors',         icon: 'ri-user-heart-line' },
+      { name: 'patients',       title: 'Patients',         icon: 'ri-team-line' },
+      { name: 'appointments',   title: 'Appointments',     icon: 'ri-calendar-event-line' },
+      { name: 'rooms',          title: 'Rooms',            icon: 'ri-door-open-line' },
+      { name: 'medicalrecords', title: 'Medical Records',  icon: 'ri-file-list-3-line' },
+    ],
+  },
+  {
+    name: 'access',
+    title: 'Access Control',
+    icon: 'ri-shield-user-line',
+    description: 'Admin users, roles, and task-based permissions.',
+    routes: [
+      { name: 'users', title: 'Users', icon: 'ri-user-settings-line' },
+      { name: 'roles', title: 'Roles', icon: 'ri-shield-user-line' },
+      { name: 'tasks', title: 'Tasks', icon: 'ri-list-check' },
+    ],
+  },
+]
+
+export default menu
+</file>
+
+<file path="src/router/index.ts">
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import menu from '@/menu'
+import { auth } from '@/stores/auth'
+
+// Authenticated children: generated from menu, paths are absolute
+// (leading slash), which is valid in Vue Router nested routes —
+// absolute child paths bypass the parent's path prefix entirely.
+const authenticatedChildren: RouteRecordRaw[] = []
+
+for (const module of menu) {
+  for (const submodule of module.routes) {
+    authenticatedChildren.push({
+      path: `/${module.name}/${submodule.name}`,
+      name: submodule.name,
+      component: () =>
+        import(
+          `@/views/authenticated/${module.name}/${submodule.name}/${submodule.name}.vue`
+        ),
+      meta: {
+        title: submodule.title,
+        module_title: module.title,
+      },
+    })
+  }
+}
+
+const routes: RouteRecordRaw[] = [
+  {
+    // Login — no layout wrapper, renders directly into App.vue's <RouterView>
+    path: '/unauthenticated/login',
+    name: 'login',
+    component: () => import('@/views/unauthenticated/login/login.vue'),
+    meta: { title: 'Login' },
+  },
+  {
+    // Authenticated shell — renders Authenticated.vue, which has its own
+    // inner <RouterView> for the actual page components.
+    // redirect here handles navigating to '/' directly.
+    path: '/',
+    component: () => import('@/layouts/Authenticated.vue'),
+    redirect: '/clinical/doctors',
+    meta: { requiresAuth: true },
+    children: authenticatedChildren,
+  },
+  {
+    // Catch-all: anything unrecognized drops to the first authenticated page.
+    // The guard below redirects to login if not authed before getting here.
+    path: '/:pathMatch(.*)*',
+    redirect: '/clinical/doctors',
+  },
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+})
+
+router.beforeEach((to) => {
+  document.title = to.meta?.title
+    ? `${String(to.meta.title)} | Clinic Admin`
+    : 'Clinic Admin'
+
+  // meta is inherited from parent routes in Vue Router 4/5,
+  // so requiresAuth on the Authenticated parent propagates to all children.
+  const authed = auth().isAuthenticated
+
+  if (to.meta.requiresAuth && !authed) return { name: 'login' }
+  if (to.name === 'login' && authed) return { path: '/clinical/doctors' }
+})
+
+export default router
+</file>
+
+<file path="src/stores/auth.ts">
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+import http from '@/utils/http'
+import { storage } from '@/utils/storage'
+import { permissions } from './permissions'
+import type { AuthUser, LoginResponse, MeResponse } from '@/types/api'
+
+export const auth = defineStore('auth', () => {
+  const user = ref<AuthUser | null>(storage.getUser<AuthUser>())
+
+  const isAuthenticated = computed(() => !!user.value && !!storage.getToken())
+
+  async function login(username: string, password: string): Promise<AuthUser> {
+    const { data: body } = await http.post<LoginResponse>('/login', { username, password })
+    storage.setToken(body.token)
+    storage.setUser(body.data)
+    user.value = body.data
+    await fetchProfile()
+    return body.data
+  }
+
+  async function fetchProfile(): Promise<AuthUser> {
+    const { data: body } = await http.get<MeResponse>('/me')
+    storage.setUser(body.data)
+    storage.setPermissions(body.permissions)
+    user.value = body.data
+    permissions().build(body.permissions)
+    return body.data
+  }
+
+  async function logout(): Promise<void> {
+    try {
+      await http.post('/logout')
+    } finally {
+      storage.clearAll()
+      user.value = null
+      permissions().clear()
+    }
+  }
+
+  return { user, isAuthenticated, login, fetchProfile, logout }
+})
+</file>
+
+<file path="src/stores/permissions.ts">
+import {defineStore} from 'pinia'
+import {ref} from 'vue'
+import { storage } from '@/utils/storage'
+
+export const permissions = defineStore('permissions',() => {
+    const value = ref<Set<string>>(new Set(storage.getPermissions()))
+
+    function build(data: string[]): void {
+        value.value = new Set(data)
+    }
+
+    function has(permission?: string | null): boolean {
+        if (!permission) return true
+        return value.value.has(permission)
+    }
+
+    function clear(): void {
+        value.value = new Set()
+    }
+
+    return { value, has, build, clear}
+})
+</file>
+
+<file path="src/style.css">
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&display=swap');
+@import 'remixicon/fonts/remixicon.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+  }
+}
+</file>
+
+<file path="src/types/api.ts">
+export interface ApiListResponse<T = any> {
+  success: boolean
+  data: T[]
+  total: number
+  page: number
+  limit: number
+  last_page: number
+}
+
+export interface ApiItemResponse<T = any> {
+  success: boolean
+  data: T
+}
+
+export interface ApiMessageResponse {
+  success: boolean
+  message: string
+  errors?: Record<string, string[]>
+}
+
+export interface ListParams {
+  page?: number
+  limit?: number
+  search?: string
+  [key: string]: any
+}
+
+export interface AuthUser {
+  id: number
+  fullname: string
+  username: string
+  email: string
+  role_id: number
+  photo?: string | null
+}
+
+export interface LoginResponse {
+  success: boolean
+  token: string
+  data: AuthUser
+}
+
+export interface MeResponse {
+  success: boolean
+  data: AuthUser
+  permissions: string[]
+}
+</file>
+
+<file path="src/types/index.d.ts">
+export {}
+
+declare global {
+    type Route = {
+        name: string
+        title: string
+        icon: string
+    }
+
+    type Module = {
+        name: string
+        title: string
+        icon: string
+        description?: string
+        routes: Route[]
+    }
+
+    type Modules = Module[]
+
+    type FieldTypeConfig = {
+        type: string
+        props?: Record<string, any>
+    }
+
+    type CRUDActions = {
+        create?: boolean
+        update?: boolean
+        delete?: boolean
+        detail?: boolean
+    }
+
+    type ListConfig = {
+        uid?: string
+        getAPI?: string
+        fields?: string[]
+        fieldsAlias?: Record<string, string>
+        fieldsProxy?: Record<string, string>
+        fieldsType?: Record<string, FieldTypeConfig>
+    }
+
+    type ViewConfig = {
+        getAPI?: string
+        fields?: string[]
+        fieldsAlias?: Record<string, string>
+        fieldsProxy?: Record<string, string>
+        fieldsType?: Record<string, FieldTypeConfig>
+        list?: ListConfig
+        detail?: ListConfig
+    }
+
+    type CRUDCompositeConfig = {
+        name: string
+        modelAPI?: string
+        permission?: string
+        title?: string
+        actions?: CRUDActions
+        fields?: string[]
+        fieldsAlias?: Record<string, string>
+        fieldsProxy?: Record<string, string>
+        fieldsType?: Record<string, FieldTypeConfig>
+        view?: ViewConfig
+        transaction?: TransactionConfig
+    }
+
+    type CRUDPermissions = {
+        view: boolean
+        lookup: boolean
+        detail: boolean
+        create: boolean
+        update: boolean
+        delete: boolean
+    }
+
+    type InputFieldConfig = {
+    type: string
+    props?: Record<string, any>
+    colSpan?: number
+    }
+
+    type InputConfig = Record<string, InputFieldConfig>
+
+    type TransactionConfig = {
+    fields?: string[]
+    targetAPI?: string
+    fieldsAlias?: Record<string, string>
+    inputConfig?: InputConfig
+    create?: {
+        fields?: string[]
+        targetAPI?: string
+        fieldsAlias?: Record<string, string>
+        inputConfig?: InputConfig
+        onSuccess?: () => void
+    }
+    update?: {
+        fields?: string[]
+        getAPI?: string
+        targetAPI?: string
+        fieldsAlias?: Record<string, string>
+        inputConfig?: InputConfig
+    }
+    }
+}
+</file>
+
+<file path="src/utils/files.ts">
+export function resolveFileUrl(path?: string | null): string | null {
+  if (!path) return null
+  if (/^https?:\/\//.test(path)) return path
+  const base = import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '')
+  return `${base}/file/${path}`
+}
+</file>
+
+<file path="src/utils/http.ts">
+import axios from 'axios'
+import { storage } from './storage'
+
+const http = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  headers: {
+    Accept: 'application/json',
+  },
+})
+
+// Request interceptor: attach the bearer token to every outgoing call.
+// Equivalent in spirit to your CI4 AuthFilter running before() on every route.
+http.interceptors.request.use((config) => {
+  const token = storage.getToken()
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
+  return config
+})
+
+// Response interceptor: react to a 401 the same way everywhere, instead of
+// repeating "if 401, log out" in every component that calls the API.
+http.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.status === 401) {
+      storage.clearAll()
+      // TODO: swap this for router.push({ name: 'login' }) once the router
+      // exists — using a hard redirect for now so this file doesn't depend
+      // on a router/index.ts we haven't built yet.
+      if (window.location.pathname !== 'unauthenticated/login') {
+        window.location.assign('unauthenticated/login')
+      }
+    }
+    return Promise.reject(error)
+  },
+)
+
+export default http
+</file>
+
+<file path="src/utils/services.ts">
+import http from './http'
+import type { ApiListResponse, ApiItemResponse, ApiMessageResponse, ListParams } from '@/types/api'
+
+const services = {
+  list<T = any>(model: string, params?: ListParams) {
+    return http.get<ApiListResponse<T>>(`/${model}/list`, { params }).then((res) => res.data)
+  },
+
+  dataset<T = any>(model: string, params?: ListParams) {
+    return http.get<ApiListResponse<T>>(`/${model}/dataset`, { params }).then((res) => res.data)
+  },
+
+  show<T = any>(model: string, id: number | string) {
+    return http.get<ApiItemResponse<T>>(`/${model}/${id}/show`).then((res) => res.data)
+  },
+
+  create<T = any>(model: string, payload: Record<string, any>) {
+    return http.post<ApiItemResponse<T>>(`/${model}/create`, payload).then((res) => res.data)
+  },
+
+  update<T = any>(model: string, payload: Record<string, any>) {
+    // id lives inside payload, not the URL — matches your backend's convention
+    return http.put<ApiItemResponse<T>>(`/${model}/update`, payload).then((res) => res.data)
+  },
+
+  delete(model: string, id: number | string) {
+    // axios quirk: DELETE request bodies go under `{ data: ... }` in the config
+    // object, not as a second positional argument like post()/put() take.
+    // Easy to miss — get this wrong and the backend never sees the id.
+    return http.delete<ApiMessageResponse>(`/${model}/delete`, { data: { id } }).then((res) => res.data)
+  },
+}
+
+export default services
+</file>
+
+<file path="src/utils/storage.ts">
+const TOKEN_KEY = 'token'
+const USER_KEY = 'user'
+const PERMISSIONS_KEY = 'permissions'
+
+function read<T>(key: string): T | null {
+  const raw = localStorage.getItem(key)
+  if (raw === null) return null
+  try {
+    return JSON.parse(raw) as T
+  } catch {
+    return raw as unknown as T
+  }
+}
+
+function write(key: string, value: unknown): void {
+  localStorage.setItem(key, typeof value === 'string' ? value : JSON.stringify(value))
+}
+
+function remove(key: string): void {
+  localStorage.removeItem(key)
+}
+
+export const storage = {
+  getToken: () => read<string>(TOKEN_KEY),
+  setToken: (token: string) => write(TOKEN_KEY, token),
+  clearToken: () => remove(TOKEN_KEY),
+
+  getUser: <T = Record<string, any>>() => read<T>(USER_KEY),
+  setUser: (user: unknown) => write(USER_KEY, user),
+  clearUser: () => remove(USER_KEY),
+
+  getPermissions: () => read<string[]>(PERMISSIONS_KEY) ?? [],
+  setPermissions: (permissions: string[]) => write(PERMISSIONS_KEY, permissions),
+  clearPermissions: () => remove(PERMISSIONS_KEY),
+
+  clearAll(): void {
+    this.clearToken()
+    this.clearUser()
+    this.clearPermissions()
+  },
+}
+</file>
+
+<file path="src/utils/upload.ts">
+import http from './http'
+
+export interface UploadResponse {
+  success: boolean
+  path: string
+  url: string
+  filename: string
+  field_value: string
+}
+
+export async function uploadTmp(file: File): Promise<UploadResponse> {
+  const form = new FormData()
+  form.append('file', file)
+  const { data } = await http.post<UploadResponse>('/upload-tmp', form, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  })
+  return data
+}
+</file>
+
+<file path="src/views/authenticated/access/roles/roles.vue">
+<script setup lang="ts">
+import roles from '@/app/configs/roles'
+</script>
+
+<template>
+  <CRUDComposite :config="roles" />
+</template>
+</file>
+
+<file path="src/views/authenticated/access/tasks/tasks.vue">
+<script setup lang="ts">
+import tasks from '@/app/configs/tasks'
+</script>
+
+<template>
+  <CRUDComposite :config="tasks" />
+</template>
+</file>
+
+<file path="src/views/authenticated/access/users/users.vue">
+<script setup lang="ts">
+import users from '@/app/configs/users'
+</script>
+
+<template>
+  <CRUDComposite :config="users" />
+</template>
+</file>
+
+<file path="src/views/authenticated/clinical/appointments/appointments.vue">
+<script setup lang="ts">
+import appointments from '@/app/configs/appointments'
+</script>
+
+<template>
+  <CRUDComposite :config="appointments" />
+</template>
+</file>
+
+<file path="src/views/authenticated/clinical/doctors/doctors.vue">
+<script setup lang="ts">
+import doctors from '@/app/configs/doctors'
+</script>
+
+<template>
+  <CRUDComposite :config="doctors" />
+</template>
+</file>
+
+<file path="src/views/authenticated/clinical/medicalrecords/medicalrecords.vue">
+<script setup lang="ts">
+import medicalrecords from '@/app/configs/medicalrecords'
+</script>
+
+<template>
+  <CRUDComposite :config="medicalrecords" />
+</template>
+</file>
+
+<file path="src/views/authenticated/clinical/patients/patients.vue">
+<script setup lang="ts">
+import patients from '@/app/configs/patients'
+</script>
+
+<template>
+  <CRUDComposite :config="patients" />
+</template>
+</file>
+
+<file path="src/views/authenticated/clinical/rooms/rooms.vue">
+<script setup lang="ts">
+import rooms from '@/app/configs/rooms'
+</script>
+
+<template>
+  <CRUDComposite :config="rooms" />
+</template>
+</file>
+
+<file path="src/views/unauthenticated/login/login.vue">
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { auth } from '@/stores/auth'
+
+const router = useRouter()
+const username = ref('')
+const password = ref('')
+const error = ref('')
+const loading = ref(false)
+
+async function onSubmit() {
+  error.value = ''
+  loading.value = true
+  try {
+    await auth().login(username.value, password.value)
+    router.push({ path: '/clinical/doctors' })
+  } catch (err: any) {
+    error.value = err.response?.data?.message ?? 'Login failed. Please try again.'
+  } finally {
+    loading.value = false
+  }
+}
+</script>
+
+<template>
+  <div class="flex min-h-screen items-center justify-center bg-clinic-50">
+    <form class="w-full max-w-sm rounded-lg bg-white p-8 shadow" @submit.prevent="onSubmit">
+      <h1 class="mb-6 text-xl font-semibold text-clinic-900">Clinic Admin Login</h1>
+
+      <label class="mb-1 block text-sm font-medium text-gray-700">Username or email</label>
+      <input
+        v-model="username"
+        type="text"
+        required
+        class="mb-4 w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none"
+      />
+
+      <label class="mb-1 block text-sm font-medium text-gray-700">Password</label>
+      <input
+        v-model="password"
+        type="password"
+        required
+        class="mb-4 w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none"
+      />
+
+      <p v-if="error" class="mb-4 text-sm text-danger">{{ error }}</p>
+
+      <button
+        type="submit"
+        :disabled="loading"
+        class="w-full rounded bg-clinic-700 py-2 text-sm font-medium text-white hover:bg-clinic-800 disabled:opacity-50"
+      >
+        {{ loading ? 'Signing in…' : 'Sign in' }}
+      </button>
+    </form>
+  </div>
+</template>
+</file>
+
+<file path="tailwind.config.js">
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Outfit', 'sans-serif'],
+        display: ['"Source Serif 4"', 'serif'],
+      },
+      colors: {
+        clinic: {
+          900: '#0d2b1f',
+          800: '#14432f',
+          700: '#1a5c40',
+          600: '#1f7a54',
+          500: '#25976a',
+          400: '#34b87f',
+          300: '#5dd09b',
+          200: '#a8e6c8',
+          100: '#d4f3e4',
+          50: '#edfaf4',
+        },
+        gray: {
+          50: '#f8faf9', 100: '#f0f4f2', 200: '#e1e9e5', 300: '#c8d6d0',
+          400: '#96afa6', 500: '#6b8880', 600: '#4a6460', 700: '#2e3f3c', 900: '#111c1a',
+        },
+        success: { DEFAULT: '#16a34a', light: '#dcfce7' },
+        warning: { DEFAULT: '#b45309', light: '#fef3c7' },
+        danger: { DEFAULT: '#b91c1c', light: '#fee2e2' },
+        info: { DEFAULT: '#0369a1', light: '#e0f2fe' },
+      },
+    },
+  },
+  plugins: [],
+}
+</file>
+
+<file path="tsconfig.app.json">
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "types": ["vite/client"],
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "paths": { "@/*": ["./src/*"] }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+}
+</file>
+
+<file path="tsconfig.json">
+{
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
+  ]
+}
+</file>
+
+<file path="tsconfig.node.json">
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "target": "es2023",
+    "lib": ["ES2023"],
+    "module": "esnext",
+    "types": ["node"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["vite.config.ts"]
+}
+</file>
+
+<file path="vite.config.ts">
+import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [vue()],
+  resolve: {
+    alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
+  },
+})
+</file>
+
+</files>

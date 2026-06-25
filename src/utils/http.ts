@@ -8,29 +8,51 @@ const http = axios.create({
   },
 })
 
-// Request interceptor: attach the bearer token to every outgoing call.
-// Equivalent in spirit to your CI4 AuthFilter running before() on every route.
+function detectGuard(): string | null {
+  if (window.location.pathname.startsWith('/doctor')) return 'doctor'
+  if (window.location.pathname.startsWith('/patient')) return 'patient'
+  return null
+}
+
 http.interceptors.request.use((config) => {
-  const token = storage.getToken()
+  const guard = detectGuard()
+  let token: string | null = null
+
+  if (guard === 'doctor') {
+    token = localStorage.getItem('doctor_token')
+  } else if (guard === 'patient') {
+    token = localStorage.getItem('patient_token')
+  } else {
+    token = storage.getToken()
+  }
+
   if (token) {
     config.headers.Authorization = `Bearer ${token}`
   }
   return config
 })
 
-// Response interceptor: react to a 401 the same way everywhere, instead of
-// repeating "if 401, log out" in every component that calls the API.
 http.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
-      storage.clearAll()
-      // TODO: swap this for router.push({ name: 'login' }) once the router
-      // exists — using a hard redirect for now so this file doesn't depend
-      // on a router/index.ts we haven't built yet.
-      if (window.location.pathname !== 'unauthenticated/login') {
-        window.location.assign('unauthenticated/login')
+      const guard = detectGuard()
+
+      if (guard === 'doctor') {
+        localStorage.removeItem('doctor_token')
+        localStorage.removeItem('doctor_user')
+      } else if (guard === 'patient') {
+        localStorage.removeItem('patient_token')
+        localStorage.removeItem('patient_user')
+      } else {
+        storage.clearAll()
       }
+
+      import('@/router').then(({ default: router }) => {
+        if (router.currentRoute.value.name !== 'login') {
+          router.push({ name: 'login' })
+        }
+      })
     }
     return Promise.reject(error)
   },
