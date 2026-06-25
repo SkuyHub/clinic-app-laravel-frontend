@@ -14,10 +14,10 @@ const roles: CRUDCompositeConfig = {
   transaction: {
     fields: ['role_code', 'role_name', 'description', 'active'],
     inputConfig: {
-      role_code:   { type: 'text',     props: { required: true, placeholder: 'e.g. ADMIN' }, colSpan: 6 },
-      role_name:   { type: 'text',     props: { required: true, placeholder: 'e.g. Administrator' }, colSpan: 6 },
+      role_code: { type: 'text', props: { required: true, placeholder: 'e.g. ADMIN' }, colSpan: 6 },
+      role_name: { type: 'text', props: { required: true, placeholder: 'e.g. Administrator' }, colSpan: 6 },
       description: { type: 'textarea', props: { placeholder: 'Optional description' } },
-      active:      { ...booleanRadio('Active', 'Inactive'), colSpan: 6 },
+      active: { ...booleanRadio('Active', 'Inactive'), colSpan: 6 },
     },
   },
 }

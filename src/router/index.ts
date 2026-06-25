@@ -11,10 +11,7 @@ for (const module of menu) {
     authenticatedChildren.push({
       path: `/${module.name}/${submodule.name}`,
       name: submodule.name,
-      component: () =>
-        import(
-          `@/views/authenticated/${module.name}/${submodule.name}/${submodule.name}.vue`
-        ),
+      component: () => import(`@/views/authenticated/${module.name}/${submodule.name}/${submodule.name}.vue`),
       meta: {
         title: submodule.title,
         module_title: module.title,
@@ -22,6 +19,13 @@ for (const module of menu) {
     })
   }
 }
+
+authenticatedChildren.push({
+  path: '/profile',
+  name: 'admin-profile',
+  component: () => import('@/views/authenticated/profile.vue'),
+  meta: { title: 'My Profile' },
+})
 
 const doctorMenuRoutes: RouteRecordRaw[] = [
   { path: '', redirect: '/doctor/dashboard' },
@@ -123,9 +127,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to) => {
-  document.title = to.meta?.title
-    ? `${String(to.meta.title)} | Clinic App`
-    : 'Clinic App'
+  document.title = to.meta?.title ? `${String(to.meta.title)} | Clinic App` : 'Clinic App'
 
   const guard = String(to.meta?.guard ?? '')
 

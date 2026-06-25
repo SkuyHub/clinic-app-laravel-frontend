@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { doctorAuth } from '@/stores/doctor-auth'
 import { patientAuth } from '@/stores/patient-auth'
@@ -13,6 +13,10 @@ const router = useRouter()
 
 const auth = computed(() => (props.role === 'doctor' ? doctorAuth() : patientAuth()))
 const user = computed(() => auth.value.user)
+
+onMounted(() => {
+  auth.value.fetchProfile().catch(() => {})
+})
 const name = computed(() => user.value?.fullname ?? '')
 const email = computed(() => user.value?.email ?? '')
 const detail = computed(() => {
@@ -25,10 +29,10 @@ const detail = computed(() => {
 const links = computed(() => {
   const prefix = `/${props.role}`
   return [
-    { label: 'Dashboard',       to: `${prefix}/dashboard`, active: route.path === `${prefix}/dashboard` || route.path === prefix },
-    { label: 'Appointments',    to: `${prefix}/appointments`, active: route.path === `${prefix}/appointments` },
+    { label: 'Dashboard', to: `${prefix}/dashboard`, active: route.path === `${prefix}/dashboard` || route.path === prefix },
+    { label: 'Appointments', to: `${prefix}/appointments`, active: route.path === `${prefix}/appointments` },
     { label: 'Medical Records', to: `${prefix}/medical-records`, active: route.path === `${prefix}/medical-records` },
-    { label: 'Profile',         to: `${prefix}/profile`,   active: route.path === `${prefix}/profile` },
+    { label: 'Profile', to: `${prefix}/profile`, active: route.path === `${prefix}/profile` },
   ]
 })
 
@@ -68,12 +72,7 @@ async function handleLogout() {
               <div class="text-xs text-gray-500 leading-tight">{{ detail || email }}</div>
             </div>
           </div>
-          <button
-            class="rounded border border-gray-300 px-3 py-1.5 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900"
-            @click="handleLogout"
-          >
-            Logout
-          </button>
+          <button class="rounded border border-gray-300 px-3 py-1.5 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900" @click="handleLogout">Logout</button>
         </div>
       </div>
     </nav>

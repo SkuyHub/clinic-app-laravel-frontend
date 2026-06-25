@@ -2,7 +2,10 @@
 import BaseInput from './BaseInput.vue'
 
 defineProps<{
-    label?: string; required?: boolean; disabled?: boolean; error?: string
+  label?: string
+  required?: boolean
+  disabled?: boolean
+  error?: string
 }>()
 
 const model = defineModel<string>()

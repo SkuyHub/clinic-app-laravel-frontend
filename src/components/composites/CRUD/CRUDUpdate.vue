@@ -15,17 +15,9 @@ function goBack() {
 }
 
 const updateConfig = {
-  fields: props.config.transaction?.update?.fields
-    ?? props.config.transaction?.fields
-    ?? props.config.fields
-    ?? [],
-  getAPI: props.config.transaction?.update?.getAPI
-    ?? props.config.modelAPI
-    ?? props.config.name,
-  targetAPI: props.config.transaction?.update?.targetAPI
-    ?? props.config.transaction?.targetAPI
-    ?? props.config.modelAPI
-    ?? props.config.name,
+  fields: props.config.transaction?.update?.fields ?? props.config.transaction?.fields ?? props.config.fields ?? [],
+  getAPI: props.config.transaction?.update?.getAPI ?? props.config.modelAPI ?? props.config.name,
+  targetAPI: props.config.transaction?.update?.targetAPI ?? props.config.transaction?.targetAPI ?? props.config.modelAPI ?? props.config.name,
   fieldsAlias: {
     ...defaultFormConfig.fieldsAlias,
     ...props.config.transaction?.fieldsAlias,
@@ -49,7 +41,12 @@ const updateConfig = {
         v-bind="updateConfig"
         form-type="update"
         :data-i-d="dataID"
-        :on-success="() => { toast.success('Updated successfully.'); goBack() }"
+        :on-success="
+          () => {
+            toast.success('Updated successfully.')
+            goBack()
+          }
+        "
       />
     </div>
   </div>

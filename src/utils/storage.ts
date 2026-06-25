@@ -39,3 +39,19 @@ export const storage = {
     this.clearPermissions()
   },
 }
+
+export function createStorage(ns: string) {
+  const tokenKey = `${ns}_token`
+  const userKey = `${ns}_user`
+
+  return {
+    getToken: () => read<string>(tokenKey),
+    setToken: (token: string) => write(tokenKey, token),
+    getUser: <T = Record<string, any>>() => read<T>(userKey),
+    setUser: (user: unknown) => write(userKey, user),
+    clearAll(): void {
+      remove(tokenKey)
+      remove(userKey)
+    },
+  }
+}

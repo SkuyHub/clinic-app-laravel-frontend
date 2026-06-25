@@ -72,9 +72,7 @@ async function submit() {
     const apiErrors = err.response?.data?.errors
     if (apiErrors) {
       // Map Laravel's { field: ['message'] } to { field: 'message' }
-      formError.value = Object.fromEntries(
-        Object.entries(apiErrors).map(([k, v]) => [k, (v as string[]).join(', ')]),
-      )
+      formError.value = Object.fromEntries(Object.entries(apiErrors).map(([k, v]) => [k, (v as string[]).join(', ')]))
       toast.error('Please correct the highlighted fields.')
     } else {
       toast.error(err.response?.data?.message ?? 'Submit failed.')
@@ -89,10 +87,7 @@ async function submit() {
   <div v-if="loading.get" class="py-12 text-center text-sm text-gray-400">Loading…</div>
   <form v-else class="grid w-full grid-cols-12 gap-x-4 gap-y-5" @submit.prevent="submit">
     <template v-for="field in fields" :key="field">
-      <div
-        class="flex flex-col"
-        :style="{ gridColumn: `span ${inputConfig[field]?.colSpan ?? 12} / span ${inputConfig[field]?.colSpan ?? 12}` }"
-      >
+      <div class="flex flex-col" :style="{ gridColumn: `span ${inputConfig[field]?.colSpan ?? 12} / span ${inputConfig[field]?.colSpan ?? 12}` }">
         <component
           v-if="componentTypeMap[inputConfig[field]?.type]"
           :is="componentTypeMap[inputConfig[field].type]"
@@ -101,18 +96,12 @@ async function submit() {
           :error="formError[field]"
           v-bind="inputConfig[field]?.props ?? {}"
         />
-        <div v-else class="rounded border border-warning bg-warning-light px-3 py-2 text-xs text-warning">
-          No inputConfig entry for "{{ field }}"
-        </div>
+        <div v-else class="rounded border border-warning bg-warning-light px-3 py-2 text-xs text-warning">No inputConfig entry for "{{ field }}"</div>
       </div>
     </template>
 
     <div class="col-span-12 flex items-center gap-3 border-t border-gray-200 pt-5 mt-1">
-      <button
-        type="submit"
-        :disabled="loading.post"
-        class="rounded bg-clinic-700 px-5 py-2 text-sm font-medium text-white hover:bg-clinic-800 disabled:opacity-50"
-      >
+      <button type="submit" :disabled="loading.post" class="rounded bg-clinic-700 px-5 py-2 text-sm font-medium text-white hover:bg-clinic-800 disabled:opacity-50">
         {{ loading.post ? 'Saving…' : formType === 'create' ? 'Create' : 'Save Changes' }}
       </button>
     </div>

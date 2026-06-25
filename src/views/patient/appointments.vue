@@ -17,7 +17,7 @@ function openDetail(row: Record<string, any>) {
 }
 
 function badgeVariant(status: string): 'scheduled' | 'completed' | 'cancelled' {
-  return (status === 'completed' || status === 'cancelled' || status === 'scheduled') ? status : 'scheduled'
+  return status === 'completed' || status === 'cancelled' || status === 'scheduled' ? status : 'scheduled'
 }
 
 const fields = ['appointment_date', 'appointment_time', 'rel_doctor_id', 'rel_room_id', 'status', 'notes']
@@ -30,11 +30,16 @@ const fieldsAlias: Record<string, string> = {
   notes: 'Notes',
 }
 const fieldsType: Record<string, FieldTypeConfig> = {
-  status: { type: 'badge', props: { map: {
-    scheduled: { label: 'Scheduled', variant: 'scheduled' as any },
-    completed: { label: 'Completed', variant: 'completed' as any },
-    cancelled: { label: 'Cancelled', variant: 'cancelled' as any },
-  }}},
+  status: {
+    type: 'badge',
+    props: {
+      map: {
+        scheduled: { label: 'Scheduled', variant: 'scheduled' as any },
+        completed: { label: 'Completed', variant: 'completed' as any },
+        cancelled: { label: 'Cancelled', variant: 'cancelled' as any },
+      },
+    },
+  },
   appointment_date: { type: 'datetime' },
 }
 </script>
@@ -50,20 +55,9 @@ const fieldsType: Record<string, FieldTypeConfig> = {
     </div>
 
     <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-      <Table
-        :getAPI="getAPI"
-        endpoint-url="/patient/appointments"        :fields="fields"
-        :fields-alias="fieldsAlias"
-        :fields-type="fieldsType"
-        :search-parameters="{ search }"
-      >
+      <Table :getAPI="getAPI" endpoint-url="/patient/appointments" :fields="fields" :fields-alias="fieldsAlias" :fields-type="fieldsType" :search-parameters="{ search }">
         <template #row-actions="{ row }">
-          <button
-            class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900"
-            @click="openDetail(row)"
-          >
-            View
-          </button>
+          <button class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900" @click="openDetail(row)">View</button>
         </template>
       </Table>
     </div>

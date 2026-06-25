@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js,.ts --fix",
+    "generate:crud": "node gen-template.js"
   },
   "dependencies": {
     "axios": "^1.18.0",
@@ -17,11 +19,20 @@
     "vue-sonner": "^2.0.9"
   },
   "devDependencies": {
+    "@rushstack/eslint-patch": "^1.10.4",
     "@types/node": "^24.12.3",
+    "@typescript-eslint/parser": "^8.0.0",
     "@vitejs/plugin-vue": "^6.0.6",
+    "@vue/eslint-config-prettier": "^9.0.0",
+    "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/tsconfig": "^0.9.1",
     "autoprefixer": "^10.5.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-vue": "^9.0.0",
     "postcss": "^8.5.15",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.6.0",
     "tailwindcss": "^3.4.19",
     "typescript": "~6.0.2",
     "vite": "^8.0.12",

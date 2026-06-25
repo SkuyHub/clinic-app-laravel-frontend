@@ -4,6 +4,7 @@ import { resolveFileUrl } from '@/utils/files'
 import Avatar from '@/components/base/Avatar.vue'
 import http from '@/utils/http'
 import { uploadTmp } from '@/utils/upload'
+import { toast } from 'vue-sonner'
 
 const auth = patientAuth()
 const user = auth.user
@@ -16,7 +17,7 @@ async function uploadPhoto(e: Event) {
     await http.put('/patient/profile', { photo: uploaded.path ?? uploaded })
     await auth.fetchProfile()
   } catch (err: any) {
-    alert(err.response?.data?.message ?? 'Upload failed')
+    toast.error(err.response?.data?.message ?? 'Upload failed')
   }
 }
 </script>

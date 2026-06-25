@@ -20,13 +20,13 @@ const users: CRUDCompositeConfig = {
   transaction: {
     fields: ['fullname', 'username', 'email', 'password', 'role_id', 'photo', 'active'],
     inputConfig: {
-      fullname: { type: 'text',     props: { required: true }, colSpan: 6 },
-      username: { type: 'text',     props: { required: true }, colSpan: 6 },
-      email:    { type: 'text',     props: { required: true }, colSpan: 6 },
+      fullname: { type: 'text', props: { required: true }, colSpan: 6 },
+      username: { type: 'text', props: { required: true }, colSpan: 6 },
+      email: { type: 'text', props: { required: true }, colSpan: 6 },
       password: { type: 'password', props: { placeholder: 'Leave blank to keep current' }, colSpan: 6 },
-      role_id:  { type: 'select',   props: { required: true, getAPI: 'roles', view: 'role_name' }, colSpan: 6 },
-      active:   { ...booleanRadio('Active', 'Inactive'), colSpan: 6 },
-      photo:    { type: 'image' },
+      role_id: { type: 'select', props: { required: true, getAPI: 'roles', view: 'role_name' }, colSpan: 6 },
+      active: { ...booleanRadio('Active', 'Inactive'), colSpan: 6 },
+      photo: { type: 'image' },
     },
     create: {
       inputConfig: {

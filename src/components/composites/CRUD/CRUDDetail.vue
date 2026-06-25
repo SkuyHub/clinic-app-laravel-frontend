@@ -18,7 +18,7 @@ const cfg = {
   fields: props.config.view?.detail?.fields ?? props.config.view?.fields ?? props.config.fields ?? [],
   fieldsAlias: { ...defaultFormConfig.fieldsAlias, ...props.config.view?.fieldsAlias, ...props.config.view?.detail?.fieldsAlias },
   fieldsProxy: { ...props.config.view?.fieldsProxy, ...props.config.view?.detail?.fieldsProxy },
-  fieldsType:  { ...props.config.view?.fieldsType,  ...props.config.view?.detail?.fieldsType  },
+  fieldsType: { ...props.config.view?.fieldsType, ...props.config.view?.detail?.fieldsType },
 }
 
 const record = ref<Record<string, any> | null>(null)
@@ -68,9 +68,7 @@ function goEdit() {
         <button class="rounded border border-gray-300 px-3 py-1.5 text-sm text-gray-600 hover:border-gray-400" @click="goBack">← Back</button>
         <h1 class="text-xl font-semibold text-clinic-900">{{ config.title }} Detail</h1>
       </div>
-      <button v-if="permissions.update" class="rounded bg-clinic-700 px-4 py-2 text-sm font-medium text-white hover:bg-clinic-800" @click="goEdit">
-        Edit
-      </button>
+      <button v-if="permissions.update" class="rounded bg-clinic-700 px-4 py-2 text-sm font-medium text-white hover:bg-clinic-800" @click="goEdit">Edit</button>
     </div>
     <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
       <div v-if="loading" class="py-12 text-center text-sm text-gray-400">Loading…</div>

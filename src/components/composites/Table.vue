@@ -104,7 +104,7 @@ watch(
     page.value = 1
     load()
   },
-  { deep: true },
+  { deep: true }
 )
 
 watch(page, load)
@@ -141,18 +141,10 @@ defineExpose({ refresh: load })
           <tr v-for="row in rows" :key="row[uid ?? 'id']" class="border-b border-gray-100 last:border-0 hover:bg-gray-50">
             <td v-for="field in fields" :key="field" class="px-4 py-2.5 text-sm">
               <div v-if="fieldType(field) === 'avatar-name'" class="flex items-center gap-2.5">
-                <Avatar
-                  :photo-url="resolveFileUrl(row[field])"
-                  :name="row[fieldTypeProps(field).nameField] ?? ''"
-                  :variant="fieldTypeProps(field).variant"
-                  size="sm"
-                />
+                <Avatar :photo-url="resolveFileUrl(row[field])" :name="row[fieldTypeProps(field).nameField] ?? ''" :variant="fieldTypeProps(field).variant" size="sm" />
                 <span class="font-medium text-gray-900">{{ row[fieldTypeProps(field).nameField] }}</span>
               </div>
-              <Badge
-                v-else-if="fieldType(field) === 'badge'"
-                :variant="fieldTypeProps(field).map?.[mapKey(resolve(row, field))]?.variant"
-              >
+              <Badge v-else-if="fieldType(field) === 'badge'" :variant="fieldTypeProps(field).map?.[mapKey(resolve(row, field))]?.variant">
                 {{ fieldTypeProps(field).map?.[mapKey(resolve(row, field))]?.label ?? resolve(row, field) }}
               </Badge>
               <span v-else-if="fieldType(field) === 'datetime'" class="text-gray-500">{{ formatDate(resolve(row, field)) }}</span>

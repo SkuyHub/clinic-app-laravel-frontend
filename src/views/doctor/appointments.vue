@@ -35,16 +35,21 @@ const fieldsAlias: Record<string, string> = {
   notes: 'Notes',
 }
 const fieldsType: Record<string, FieldTypeConfig> = {
-  status: { type: 'badge', props: { map: {
-    scheduled:  { label: 'Scheduled',  variant: 'scheduled' as any },
-    completed:  { label: 'Completed',  variant: 'completed' as any },
-    cancelled:  { label: 'Cancelled',  variant: 'cancelled' as any },
-  }}},
+  status: {
+    type: 'badge',
+    props: {
+      map: {
+        scheduled: { label: 'Scheduled', variant: 'scheduled' as any },
+        completed: { label: 'Completed', variant: 'completed' as any },
+        cancelled: { label: 'Cancelled', variant: 'cancelled' as any },
+      },
+    },
+  },
   appointment_date: { type: 'datetime' },
 }
 
 function badgeVariant(status: string): 'scheduled' | 'completed' | 'cancelled' {
-  return (status === 'completed' || status === 'cancelled' || status === 'scheduled') ? status : 'scheduled'
+  return status === 'completed' || status === 'cancelled' || status === 'scheduled' ? status : 'scheduled'
 }
 
 async function updateStatus(row: Record<string, any>, status: string) {
@@ -64,22 +69,10 @@ async function updateStatus(row: Record<string, any>, status: string) {
     </div>
 
     <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-      <Table
-        ref="tableRef"
-        :getAPI="getAPI"
-        endpoint-url="/doctor/appointments"        :fields="fields"
-        :fields-alias="fieldsAlias"
-        :fields-type="fieldsType"
-        :search-parameters="{ search }"
-      >
+      <Table ref="tableRef" :getAPI="getAPI" endpoint-url="/doctor/appointments" :fields="fields" :fields-alias="fieldsAlias" :fields-type="fieldsType" :search-parameters="{ search }">
         <template #row-actions="{ row }">
           <div class="flex items-center gap-2">
-            <button
-              class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900"
-              @click="openDetail(row)"
-            >
-              View
-            </button>
+            <button class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900" @click="openDetail(row)">View</button>
             <select
               class="rounded border border-gray-300 bg-white px-2 py-1 text-xs text-gray-700 focus:border-clinic-500 focus:outline-none"
               :value="row.status"

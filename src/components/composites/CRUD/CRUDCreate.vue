@@ -9,28 +9,22 @@ const route = useRoute()
 const router = useRouter()
 
 function goBack() {
-    router.push({ name: String(route.name), query: { ...route.query, [`${props.config.name}_view`]: 'list' }})
+  router.push({ name: String(route.name), query: { ...route.query, [`${props.config.name}_view`]: 'list' } })
 }
 
 const createConfig = {
-    fields: props.config.transaction?.create?.fields
-    ?? props.config.transaction?.fields
-    ?? props.config.fields
-    ?? [],
-    targetAPI: props.config.transaction?.create?.targetAPI
-    ?? props.config.transaction?.targetAPI
-    ?? props.config.modelAPI
-    ?? props.config.name,
-    fieldsAlias: {
-        ...defaultFormConfig.fieldsAlias,
-        ...props.config.transaction?.fieldsAlias,
-        ...props.config.transaction?.create?.fieldsAlias,
-    },
-    inputConfig: {
-        ...(props.config.transaction?.inputConfig ?? {}),
-        ...(props.config.transaction?.create?.inputConfig ?? {}),
-    } as InputConfig,
-    onSuccess: props.config.transaction?.create?.onSuccess,
+  fields: props.config.transaction?.create?.fields ?? props.config.transaction?.fields ?? props.config.fields ?? [],
+  targetAPI: props.config.transaction?.create?.targetAPI ?? props.config.transaction?.targetAPI ?? props.config.modelAPI ?? props.config.name,
+  fieldsAlias: {
+    ...defaultFormConfig.fieldsAlias,
+    ...props.config.transaction?.fieldsAlias,
+    ...props.config.transaction?.create?.fieldsAlias,
+  },
+  inputConfig: {
+    ...(props.config.transaction?.inputConfig ?? {}),
+    ...(props.config.transaction?.create?.inputConfig ?? {}),
+  } as InputConfig,
+  onSuccess: props.config.transaction?.create?.onSuccess,
 }
 </script>
 
@@ -44,7 +38,13 @@ const createConfig = {
       <Form
         v-bind="createConfig"
         form-type="create"
-        :on-success="createConfig.onSuccess ?? (() => { toast.success('Created successfully.'); goBack() })"
+        :on-success="
+          createConfig.onSuccess ??
+          (() => {
+            toast.success('Created successfully.')
+            goBack()
+          })
+        "
       />
     </div>
   </div>

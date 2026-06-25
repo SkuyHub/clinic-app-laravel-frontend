@@ -60,11 +60,7 @@ async function handleDelete(row: Record<string, any>) {
         <h1 class="text-xl font-semibold text-clinic-900">{{ config.title ?? route.meta.title }}</h1>
         <SearchBox v-model="search" />
       </div>
-      <button
-        v-if="(config.actions?.create ?? true) && permissions.create"
-        class="rounded bg-clinic-700 px-4 py-2 text-sm font-medium text-white hover:bg-clinic-800"
-        @click="openCreate"
-      >
+      <button v-if="(config.actions?.create ?? true) && permissions.create" class="rounded bg-clinic-700 px-4 py-2 text-sm font-medium text-white hover:bg-clinic-800" @click="openCreate">
         + Add {{ config.title }}
       </button>
     </div>
@@ -87,11 +83,7 @@ async function handleDelete(row: Record<string, any>) {
             >
               Edit
             </button>
-            <button
-              v-if="(config.actions?.delete ?? true) && permissions.delete"
-              class="rounded border border-gray-300 px-2 py-1 text-xs text-danger hover:border-danger"
-              @click="handleDelete(row)"
-            >
+            <button v-if="(config.actions?.delete ?? true) && permissions.delete" class="rounded border border-gray-300 px-2 py-1 text-xs text-danger hover:border-danger" @click="handleDelete(row)">
               Delete
             </button>
           </div>

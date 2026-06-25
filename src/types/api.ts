@@ -53,6 +53,7 @@ export interface DoctorUser {
   email: string
   phone?: string
   photo?: string | null
+  available?: boolean
 }
 
 export interface PatientUser {

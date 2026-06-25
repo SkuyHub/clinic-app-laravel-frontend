@@ -2,11 +2,15 @@
 import BaseInput from './BaseInput.vue'
 
 withDefaults(
-    defineProps<{
-        label?: string; required?: boolean; disabled?: boolean
-        error?: string; placeholder?: string; rows?: number
-    }>(),
-    { rows: 3},
+  defineProps<{
+    label?: string
+    required?: boolean
+    disabled?: boolean
+    error?: string
+    placeholder?: string
+    rows?: number
+  }>(),
+  { rows: 3 }
 )
 const model = defineModel<string>()
 </script>

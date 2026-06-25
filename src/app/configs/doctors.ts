@@ -19,13 +19,13 @@ const doctors: CRUDCompositeConfig = {
   transaction: {
     fields: ['fullname', 'specialization', 'email', 'password', 'phone', 'available', 'photo'],
     inputConfig: {
-      fullname:       { type: 'text',     props: { required: true, placeholder: 'Dr. John Smith' }, colSpan: 6 },
-      specialization: { type: 'text',     props: { required: true, placeholder: 'e.g. Cardiology' }, colSpan: 6 },
-      email:          { type: 'text',     props: { required: true, placeholder: 'doctor@clinic.com' }, colSpan: 6 },
-      phone:          { type: 'text',     props: { placeholder: '+62...' }, colSpan: 6 },
-      password:       { type: 'password', props: { placeholder: 'Leave blank to keep current' }, colSpan: 6 },
-      available:      { ...booleanRadio('Available', 'Occupied'), colSpan: 6 },
-      photo:          { type: 'image' },
+      fullname: { type: 'text', props: { required: true, placeholder: 'Dr. John Smith' }, colSpan: 6 },
+      specialization: { type: 'text', props: { required: true, placeholder: 'e.g. Cardiology' }, colSpan: 6 },
+      email: { type: 'text', props: { required: true, placeholder: 'doctor@clinic.com' }, colSpan: 6 },
+      phone: { type: 'text', props: { placeholder: '+62...' }, colSpan: 6 },
+      password: { type: 'password', props: { placeholder: 'Leave blank to keep current' }, colSpan: 6 },
+      available: { ...booleanRadio('Available', 'Occupied'), colSpan: 6 },
+      photo: { type: 'image' },
     },
     create: {
       inputConfig: {

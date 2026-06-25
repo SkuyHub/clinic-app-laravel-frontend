@@ -3,10 +3,14 @@ import BaseInput from './BaseInput.vue'
 
 const props = withDefaults(
   defineProps<{
-    label?: string; required?: boolean; disabled?: boolean
-    error?: string; placeholder?: string; type?: string
+    label?: string
+    required?: boolean
+    disabled?: boolean
+    error?: string
+    placeholder?: string
+    type?: string
   }>(),
-  { type: 'text' },
+  { type: 'text' }
 )
 const model = defineModel<string>()
 </script>

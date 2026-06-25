@@ -27,14 +27,10 @@ async function onSubmit() {
       await auth().fetchProfile()
       router.push({ path: '/clinical/doctors' })
     } else if (role === 'doctor') {
-      localStorage.setItem('doctor_token', token)
-      localStorage.setItem('doctor_user', JSON.stringify(data))
-      doctorAuth().user = data as any
+      doctorAuth().hydrate(token, data as any)
       router.push({ path: '/doctor' })
     } else {
-      localStorage.setItem('patient_token', token)
-      localStorage.setItem('patient_user', JSON.stringify(data))
-      patientAuth().user = data as any
+      patientAuth().hydrate(token, data as any)
       router.push({ path: '/patient' })
     }
   } catch (err: any) {
@@ -52,28 +48,14 @@ async function onSubmit() {
       <p class="mb-6 text-sm text-gray-500">Sign in to your account</p>
 
       <label class="mb-1 block text-sm font-medium text-gray-700">Email</label>
-      <input
-        v-model="email"
-        type="email"
-        required
-        class="mb-4 w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none"
-      />
+      <input v-model="email" type="email" required class="mb-4 w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none" />
 
       <label class="mb-1 block text-sm font-medium text-gray-700">Password</label>
-      <input
-        v-model="password"
-        type="password"
-        required
-        class="mb-4 w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none"
-      />
+      <input v-model="password" type="password" required class="mb-4 w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none" />
 
       <p v-if="error" class="mb-4 text-sm text-danger">{{ error }}</p>
 
-      <button
-        type="submit"
-        :disabled="loading"
-        class="w-full rounded bg-clinic-700 py-2 text-sm font-medium text-white hover:bg-clinic-800 disabled:opacity-50"
-      >
+      <button type="submit" :disabled="loading" class="w-full rounded bg-clinic-700 py-2 text-sm font-medium text-white hover:bg-clinic-800 disabled:opacity-50">
         {{ loading ? 'Signing in…' : 'Sign in' }}
       </button>
     </form>

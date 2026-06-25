@@ -19,7 +19,9 @@ onMounted(async () => {
     todayAppointments.value = body.data ?? []
     stats.value.today = body.total ?? todayAppointments.value.length
     stats.value.completed = todayAppointments.value.filter((a: any) => a.status === 'completed').length
-  } catch { /* dashboard gracefully shows zeros */ }
+  } catch {
+    /* dashboard gracefully shows zeros */
+  }
 })
 </script>
 
@@ -60,9 +62,7 @@ onMounted(async () => {
               <div class="text-xs text-gray-500">{{ appt.rel_room_id }}</div>
             </div>
           </div>
-          <Badge
-            :variant="appt.status === 'completed' ? 'completed' : appt.status === 'cancelled' ? 'cancelled' : 'scheduled'"
-          >
+          <Badge :variant="appt.status === 'completed' ? 'completed' : appt.status === 'cancelled' ? 'cancelled' : 'scheduled'">
             {{ appt.status }}
           </Badge>
         </div>

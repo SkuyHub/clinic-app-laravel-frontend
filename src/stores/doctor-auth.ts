@@ -1,29 +1,25 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import http from '@/utils/http'
-import type { DoctorUser, LoginResponse, MeResponse } from '@/types/api'
+import { createStorage } from '@/utils/storage'
+import type { DoctorUser, MeResponse } from '@/types/api'
+
+const storage = createStorage('doctor')
 
 export const doctorAuth = defineStore('doctor-auth', () => {
-  const doctorKey = 'doctor_user'
-  const tokenKey = 'doctor_token'
+  const user = ref<DoctorUser | null>(storage.getUser<DoctorUser>())
 
-  const stored = localStorage.getItem(doctorKey)
-  const user = ref<DoctorUser | null>(stored ? JSON.parse(stored) : null)
+  const isAuthenticated = computed(() => !!user.value && !!storage.getToken())
 
-  const isAuthenticated = computed(() => !!user.value && !!localStorage.getItem(tokenKey))
-
-  async function login(email: string, password: string): Promise<DoctorUser> {
-    const { data: body } = await http.post<LoginResponse>('/doctor/login', { email, password })
-    localStorage.setItem(tokenKey, body.token)
-    localStorage.setItem(doctorKey, JSON.stringify(body.data))
-    user.value = body.data as unknown as DoctorUser
-    await fetchProfile()
-    return body.data as unknown as DoctorUser
+  function hydrate(token: string, data: DoctorUser) {
+    storage.setToken(token)
+    storage.setUser(data)
+    user.value = data
   }
 
   async function fetchProfile(): Promise<DoctorUser> {
     const { data: body } = await http.get<MeResponse>('/doctor/me')
-    localStorage.setItem(doctorKey, JSON.stringify(body.data))
+    storage.setUser(body.data)
     user.value = body.data as unknown as DoctorUser
     return body.data as unknown as DoctorUser
   }
@@ -32,11 +28,10 @@ export const doctorAuth = defineStore('doctor-auth', () => {
     try {
       await http.post('/logout')
     } finally {
-      localStorage.removeItem(tokenKey)
-      localStorage.removeItem(doctorKey)
+      storage.clearAll()
       user.value = null
     }
   }
 
-  return { user, isAuthenticated, login, fetchProfile, logout }
+  return { user, isAuthenticated, hydrate, fetchProfile, logout }
 })

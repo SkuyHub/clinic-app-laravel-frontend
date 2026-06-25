@@ -4,6 +4,7 @@ import { resolveFileUrl } from '@/utils/files'
 import Avatar from '@/components/base/Avatar.vue'
 import http from '@/utils/http'
 import { uploadTmp } from '@/utils/upload'
+import { toast } from 'vue-sonner'
 
 const auth = doctorAuth()
 const user = auth.user
@@ -16,7 +17,7 @@ async function uploadPhoto(e: Event) {
     await http.put('/doctor/profile', { photo: uploaded.path ?? uploaded })
     await auth.fetchProfile()
   } catch (err: any) {
-    alert(err.response?.data?.message ?? 'Upload failed')
+    toast.error(err.response?.data?.message ?? 'Upload failed')
   }
 }
 </script>
@@ -48,7 +49,7 @@ async function uploadPhoto(e: Event) {
         </div>
         <div class="flex justify-between py-3 text-sm">
           <span class="text-gray-500">Phone</span>
-          <span class="font-medium text-gray-900">{{ (user as any)?.phone || '—' }}</span>
+          <span class="font-medium text-gray-900">{{ user?.phone || '—' }}</span>
         </div>
         <div class="flex justify-between py-3 text-sm">
           <span class="text-gray-500">Specialization</span>

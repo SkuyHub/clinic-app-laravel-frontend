@@ -39,20 +39,9 @@ const fieldsType: Record<string, FieldTypeConfig> = {
     </div>
 
     <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-      <Table
-        :getAPI="getAPI"
-        endpoint-url="/doctor/medicalrecords"        :fields="fields"
-        :fields-alias="fieldsAlias"
-        :fields-type="fieldsType"
-        :search-parameters="{ search }"
-      >
+      <Table :getAPI="getAPI" endpoint-url="/doctor/medicalrecords" :fields="fields" :fields-alias="fieldsAlias" :fields-type="fieldsType" :search-parameters="{ search }">
         <template #row-actions="{ row }">
-          <button
-            class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900"
-            @click="openDetail(row)"
-          >
-            View
-          </button>
+          <button class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900" @click="openDetail(row)">View</button>
         </template>
       </Table>
     </div>

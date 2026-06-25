@@ -5,7 +5,10 @@ import services from '@/utils/services'
 
 const props = withDefaults(
   defineProps<{
-    label?: string; required?: boolean; disabled?: boolean; error?: string
+    label?: string
+    required?: boolean
+    disabled?: boolean
+    error?: string
     placeholder?: string
     data?: Array<Record<string, any>>
     getAPI?: string
@@ -13,7 +16,7 @@ const props = withDefaults(
     view?: string
     searchParameters?: Record<string, any>
   }>(),
-  { pick: 'id', view: 'name', placeholder: '— Select —' },
+  { pick: 'id', view: 'name', placeholder: '— Select —' }
 )
 
 const model = defineModel<any>()
@@ -37,8 +40,11 @@ async function loadOptions() {
 const normalized = computed({
   get: () => (model.value == null ? '' : String(model.value)),
   set: (val: string) => {
-    if (val === '') { model.value = null; return }
-    const match = options.value.find(o => String(o[props.pick]) === val)
+    if (val === '') {
+      model.value = null
+      return
+    }
+    const match = options.value.find((o) => String(o[props.pick]) === val)
     // Prefer the matched option's original typed id over a raw string
     model.value = match ? match[props.pick] : val
   },
