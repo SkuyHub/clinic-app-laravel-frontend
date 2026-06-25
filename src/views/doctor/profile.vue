@@ -20,6 +20,16 @@ async function uploadPhoto(e: Event) {
     toast.error(err.response?.data?.message ?? 'Upload failed')
   }
 }
+
+async function toggleAvailable() {
+  try {
+    await http.put('/doctor/profile', { available: !user?.available })
+    await auth.fetchProfile()
+    toast.success(user?.available ? 'You are now available' : 'You are now unavailable')
+  } catch (err: any) {
+    toast.error(err.response?.data?.message ?? 'Failed to update status')
+  }
+}
 </script>
 
 <template>
@@ -54,6 +64,18 @@ async function uploadPhoto(e: Event) {
         <div class="flex justify-between py-3 text-sm">
           <span class="text-gray-500">Specialization</span>
           <span class="font-medium text-gray-900">{{ user?.specialization }}</span>
+        </div>
+        <div class="flex items-center justify-between py-3 text-sm">
+          <span class="text-gray-500">Availability</span>
+          <div class="flex items-center gap-2">
+            <span class="font-medium text-gray-900">{{ user?.available ? 'Available' : 'Unavailable' }}</span>
+            <button
+              class="rounded border border-gray-300 px-2 py-0.5 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900"
+              @click="toggleAvailable"
+            >
+              Toggle
+            </button>
+          </div>
         </div>
       </div>
     </div>
