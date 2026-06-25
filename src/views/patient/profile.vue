@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { patientAuth } from '@/stores/patient-auth'
 import { resolveFileUrl } from '@/utils/files'
 import Avatar from '@/components/base/Avatar.vue'
@@ -7,7 +8,7 @@ import { uploadTmp } from '@/utils/upload'
 import { toast } from 'vue-sonner'
 
 const auth = patientAuth()
-const user = auth.user
+const user = computed(() => auth.user)
 
 async function uploadPhoto(e: Event) {
   const file = (e.target as HTMLInputElement).files?.[0]

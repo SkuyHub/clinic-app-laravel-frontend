@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { doctorAuth } from '@/stores/doctor-auth'
 import { resolveFileUrl } from '@/utils/files'
 import Avatar from '@/components/base/Avatar.vue'
@@ -7,7 +8,7 @@ import { uploadTmp } from '@/utils/upload'
 import { toast } from 'vue-sonner'
 
 const auth = doctorAuth()
-const user = auth.user
+const user = computed(() => auth.user)
 
 async function uploadPhoto(e: Event) {
   const file = (e.target as HTMLInputElement).files?.[0]
@@ -23,9 +24,9 @@ async function uploadPhoto(e: Event) {
 
 async function toggleAvailable() {
   try {
-    await http.put('/doctor/profile', { available: !user?.available })
+    await http.put('/doctor/profile', { available: !user.value?.available })
     await auth.fetchProfile()
-    toast.success(user?.available ? 'You are now available' : 'You are now unavailable')
+    toast.success(user.value?.available ? 'You are now available' : 'You are now unavailable')
   } catch (err: any) {
     toast.error(err.response?.data?.message ?? 'Failed to update status')
   }

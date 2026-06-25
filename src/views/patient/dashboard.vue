@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { patientAuth } from '@/stores/patient-auth'
 import http from '@/utils/http'
 import Badge from '@/components/base/Badge.vue'
 import { toast } from 'vue-sonner'
 
-const user = patientAuth().user
+const auth = patientAuth()
+const user = computed(() => auth.user)
 
 const stats = ref({ upcoming: 0, records: 0 })
 const appointments = ref<any[]>([])
