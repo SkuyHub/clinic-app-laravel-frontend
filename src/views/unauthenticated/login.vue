@@ -4,6 +4,8 @@ import { useRouter } from 'vue-router'
 import { auth } from '@/stores/auth'
 import { doctorAuth } from '@/stores/doctor-auth'
 import { patientAuth } from '@/stores/patient-auth'
+import { storage } from '@/utils/storage'
+import type { AuthUser, DoctorUser, PatientUser } from '@/types/api'
 import http from '@/utils/http'
 
 const router = useRouter()
@@ -18,22 +20,23 @@ async function onSubmit() {
   loading.value = true
   try {
     const { data: body } = await http.post('/login', { email: email.value, password: password.value })
-    const { token, role, data } = body as { token: string; role: string; data: Record<string, any> }
+    const { token, role, data } = body as { token: string; role: string; data: Record<string, unknown> }
 
     if (role === 'admin') {
-      localStorage.setItem('token', token)
-      localStorage.setItem('user', JSON.stringify(data))
-      auth().user = data as any
+      storage.setToken(token)
+      storage.setUser(data)
+      auth().user = data as AuthUser
       await auth().fetchProfile()
       router.push({ path: '/clinical/doctors' })
     } else if (role === 'doctor') {
-      doctorAuth().hydrate(token, data as any)
+      doctorAuth().hydrate(token, data as DoctorUser)
       router.push({ path: '/doctor' })
     } else {
-      patientAuth().hydrate(token, data as any)
+      patientAuth().hydrate(token, data as PatientUser)
       router.push({ path: '/patient' })
     }
-  } catch (err: any) {
+  } catch (e: unknown) {
+    const err = e as { response?: { data?: { message?: string } } }
     error.value = err.response?.data?.message ?? 'Login failed. Please try again.'
   } finally {
     loading.value = false

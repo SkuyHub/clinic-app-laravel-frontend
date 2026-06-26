@@ -25,7 +25,8 @@ async function saveProfile() {
     authStore.user = data.data
     password.value = ''
     toast.success('Profile updated.')
-  } catch (err: any) {
+  } catch (e: unknown) {
+    const err = e as { response?: { data?: { message?: string } } }
     toast.error(err.response?.data?.message ?? 'Update failed')
   } finally {
     saving.value = false
@@ -40,7 +41,8 @@ async function uploadPhoto(e: Event) {
     await http.put('/profile', { photo: uploaded.path ?? uploaded })
     await authStore.fetchProfile()
     toast.success('Photo updated.')
-  } catch (err: any) {
+  } catch (e: unknown) {
+    const err = e as { response?: { data?: { message?: string } } }
     toast.error(err.response?.data?.message ?? 'Upload failed')
   }
 }

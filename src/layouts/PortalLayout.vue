@@ -21,7 +21,7 @@ const name = computed(() => user.value?.fullname ?? '')
 const email = computed(() => user.value?.email ?? '')
 const detail = computed(() => {
   if (props.role === 'doctor' && user.value) {
-    return (user.value as any).specialization ?? ''
+    return (user.value as { specialization?: string }).specialization ?? ''
   }
   return ''
 })

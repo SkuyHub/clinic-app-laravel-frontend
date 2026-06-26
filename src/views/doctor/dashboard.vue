@@ -18,7 +18,7 @@ onMounted(async () => {
     const body = res.data
     todayAppointments.value = body.data ?? []
     stats.value.today = body.total ?? todayAppointments.value.length
-    stats.value.completed = todayAppointments.value.filter((a: any) => a.status === 'completed').length
+    stats.value.completed = todayAppointments.value.filter((a: { status?: string }) => a.status === 'completed').length
   } catch {
     /* dashboard gracefully shows zeros */
   }

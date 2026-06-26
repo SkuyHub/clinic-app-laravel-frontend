@@ -23,7 +23,8 @@ const actionsPermission: CRUDPermissions = {
 
 const currentView = computed<'list' | 'detail' | 'create' | 'update'>(() => {
   const v = route.query[`${props.config.name}_view`]
-  return ((Array.isArray(v) ? v[0] : v) as any) || 'list'
+  const raw = Array.isArray(v) ? v[0] : v
+  return (typeof raw === 'string' ? raw : undefined) || 'list'
 })
 </script>
 

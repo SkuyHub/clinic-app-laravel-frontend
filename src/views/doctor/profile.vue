@@ -17,7 +17,8 @@ async function uploadPhoto(e: Event) {
     const uploaded = await uploadTmp(file)
     await http.put('/doctor/profile', { photo: uploaded.path ?? uploaded })
     await auth.fetchProfile()
-  } catch (err: any) {
+  } catch (e: unknown) {
+    const err = e as { response?: { data?: { message?: string } } }
     toast.error(err.response?.data?.message ?? 'Upload failed')
   }
 }
@@ -27,7 +28,8 @@ async function toggleAvailable() {
     await http.put('/doctor/profile', { available: !user.value?.available })
     await auth.fetchProfile()
     toast.success(user.value?.available ? 'You are now available' : 'You are now unavailable')
-  } catch (err: any) {
+  } catch (e: unknown) {
+    const err = e as { response?: { data?: { message?: string } } }
     toast.error(err.response?.data?.message ?? 'Failed to update status')
   }
 }

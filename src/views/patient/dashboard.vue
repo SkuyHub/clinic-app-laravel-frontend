@@ -50,7 +50,8 @@ async function submitBooking() {
     const appsRes = await http.get('/patient/appointments', { params: { limit: 5 } })
     appointments.value = appsRes.data.data ?? []
     stats.value.upcoming = appsRes.data.total ?? appointments.value.length
-  } catch (err: any) {
+  } catch (e: unknown) {
+    const err = e as { response?: { data?: { message?: string } } }
     toast.error(err.response?.data?.message ?? 'Booking failed')
   } finally {
     booking.value = false

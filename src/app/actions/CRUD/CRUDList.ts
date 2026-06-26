@@ -5,7 +5,8 @@ export async function onDelete(model: string, id: number | string): Promise<void
   try {
     await services.delete(model, id)
     toast.success('Record deleted.')
-  } catch (err: any) {
+  } catch (e: unknown) {
+    const err = e as { response?: { data?: { message?: string } } }
     toast.error(err.response?.data?.message ?? 'Delete failed.')
     throw err
   }

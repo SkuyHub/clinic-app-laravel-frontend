@@ -17,7 +17,8 @@ async function uploadPhoto(e: Event) {
     const uploaded = await uploadTmp(file)
     await http.put('/patient/profile', { photo: uploaded.path ?? uploaded })
     await auth.fetchProfile()
-  } catch (err: any) {
+  } catch (e: unknown) {
+    const err = e as { response?: { data?: { message?: string } } }
     toast.error(err.response?.data?.message ?? 'Upload failed')
   }
 }

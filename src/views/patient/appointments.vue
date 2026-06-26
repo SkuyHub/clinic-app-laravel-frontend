@@ -34,9 +34,9 @@ const fieldsType: Record<string, FieldTypeConfig> = {
     type: 'badge',
     props: {
       map: {
-        scheduled: { label: 'Scheduled', variant: 'scheduled' as any },
-        completed: { label: 'Completed', variant: 'completed' as any },
-        cancelled: { label: 'Cancelled', variant: 'cancelled' as any },
+        scheduled: { label: 'Scheduled', variant: 'scheduled' as const },
+        completed: { label: 'Completed', variant: 'completed' as const },
+        cancelled: { label: 'Cancelled', variant: 'cancelled' as const },
       },
     },
   },

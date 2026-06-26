@@ -30,7 +30,8 @@ async function onFileChange(e: Event) {
     const res = await uploadTmp(file)
     model.value = res.field_value
     previewUrl.value = res.url
-  } catch (err: any) {
+  } catch (e: unknown) {
+    const err = e as { response?: { data?: { message?: string } } }
     uploadError.value = err.response?.data?.message ?? 'Upload failed.'
   } finally {
     uploading.value = false

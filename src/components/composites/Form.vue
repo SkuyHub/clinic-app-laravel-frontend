@@ -68,7 +68,8 @@ async function submit() {
       await services.create(props.targetAPI, formData.value)
     }
     props.onSuccess?.()
-  } catch (err: any) {
+  } catch (e: unknown) {
+    const err = e as { response?: { data?: { errors?: Record<string, string[]>; message?: string } } }
     const apiErrors = err.response?.data?.errors
     if (apiErrors) {
       // Map Laravel's { field: ['message'] } to { field: 'message' }
