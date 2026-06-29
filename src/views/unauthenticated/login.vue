@@ -27,7 +27,7 @@ async function onSubmit() {
       storage.setUser(data)
       auth().user = data as AuthUser
       await auth().fetchProfile()
-      router.push({ path: '/clinical/doctors' })
+      router.push({ path: '/dashboard' })
     } else if (role === 'doctor') {
       doctorAuth().hydrate(token, data as DoctorUser)
       router.push({ path: '/doctor' })

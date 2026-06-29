@@ -7,7 +7,13 @@ const doctors: CRUDCompositeConfig = {
     fields: ['id', 'photo', 'fullname', 'specialization', 'email', 'phone', 'available', 'created_at'],
     fieldsType: { available: booleanBadge('Available', 'Occupied'), photo: { type: 'image' }, ...defaultTableConfig.fieldsType },
     list: {
-      fields: ['photo', 'specialization', 'email', 'phone', 'available'],
+      fields: [
+        'photo',
+        // 'specialization',
+        'email',
+        'phone',
+        'available'
+      ],
       fieldsAlias: { photo: 'Name' },
       fieldsType: {
         photo: { type: 'avatar-name', props: { nameField: 'fullname', variant: 'green' } },

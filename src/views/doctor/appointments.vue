@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { toast } from 'vue-sonner'
 import Table from '@/components/composites/Table.vue'
 import SearchBox from '@/components/composites/SearchBox.vue'
 import Modal from '@/components/base/Modal.vue'
@@ -13,6 +14,33 @@ const search = ref('')
 const detail = ref<Record<string, any> | null>(null)
 const patientRecords = ref<any[]>([])
 const modalOpen = ref(false)
+
+const createOpen = ref(false)
+const createForm = ref({ appointment_id: 0, diagnosis: '', treatment: '', prescription: '', notes: '' })
+const createLoading = ref(false)
+const createError = ref('')
+
+function openCreate(row: Record<string, any>) {
+  createForm.value = { appointment_id: row.id, diagnosis: '', treatment: '', prescription: '', notes: '' }
+  createError.value = ''
+  createOpen.value = true
+}
+
+async function submitCreate() {
+  createError.value = ''
+  createLoading.value = true
+  try {
+    await http.post('/doctor/medicalrecords/create', { ...createForm.value })
+    toast.success('Medical record created.')
+    createOpen.value = false
+    tableRef.value?.refresh()
+  } catch (e: unknown) {
+    const err = e as { response?: { data?: { message?: string } } }
+    createError.value = err.response?.data?.message ?? 'Failed to create record.'
+  } finally {
+    createLoading.value = false
+  }
+}
 
 async function openDetail(row: Record<string, any>) {
   detail.value = row
@@ -50,6 +78,13 @@ async function updateStatus(row: Record<string, any>, status: string) {
         <template #row-actions="{ row }">
           <div class="flex items-center gap-2">
             <button class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900" @click="openDetail(row)">View</button>
+            <button
+              v-if="row.status !== 'completed' && row.status !== 'cancelled'"
+              class="rounded border border-emerald-300 px-2 py-1 text-xs text-emerald-700 hover:border-emerald-500 hover:bg-emerald-50"
+              @click="openCreate(row)"
+            >
+              Record
+            </button>
             <select
               class="rounded border border-gray-300 bg-white px-2 py-1 text-xs text-gray-700 focus:border-clinic-500 focus:outline-none"
               :value="row.status"
@@ -103,6 +138,34 @@ async function updateStatus(row: Record<string, any>, status: string) {
           </div>
         </div>
       </template>
+    </Modal>
+
+    <Modal v-model="createOpen" title="Create Medical Record">
+      <form class="flex flex-col gap-4" @submit.prevent="submitCreate">
+        <div>
+          <label class="mb-1 block text-sm font-medium text-gray-700">Diagnosis <span class="text-danger">*</span></label>
+          <textarea v-model="createForm.diagnosis" required rows="3" class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none" placeholder="Enter diagnosis..." />
+        </div>
+        <div>
+          <label class="mb-1 block text-sm font-medium text-gray-700">Treatment</label>
+          <textarea v-model="createForm.treatment" rows="3" class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none" placeholder="Enter treatment plan..." />
+        </div>
+        <div>
+          <label class="mb-1 block text-sm font-medium text-gray-700">Prescription</label>
+          <textarea v-model="createForm.prescription" rows="2" class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none" placeholder="Enter prescription..." />
+        </div>
+        <div>
+          <label class="mb-1 block text-sm font-medium text-gray-700">Additional Notes</label>
+          <textarea v-model="createForm.notes" rows="2" class="w-full rounded border border-gray-300 px-3 py-2 text-sm focus:border-clinic-500 focus:outline-none" placeholder="Optional notes..." />
+        </div>
+        <p v-if="createError" class="text-sm text-danger">{{ createError }}</p>
+        <div class="flex items-center gap-3 border-t border-gray-200 pt-4">
+          <button type="submit" :disabled="createLoading" class="rounded bg-clinic-700 px-5 py-2 text-sm font-medium text-white hover:bg-clinic-800 disabled:opacity-50">
+            {{ createLoading ? 'Saving…' : 'Create Record' }}
+          </button>
+          <button type="button" class="rounded border border-gray-300 px-5 py-2 text-sm text-gray-600 hover:border-gray-400" @click="createOpen = false">Cancel</button>
+        </div>
+      </form>
     </Modal>
   </div>
 </template>

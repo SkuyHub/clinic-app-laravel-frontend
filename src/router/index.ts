@@ -22,6 +22,13 @@ for (const module of menu) {
 }
 
 authenticatedChildren.push({
+  path: '/dashboard',
+  name: 'dashboard',
+  component: () => import('@/views/authenticated/dashboard.vue'),
+  meta: { title: 'Dashboard' },
+})
+
+authenticatedChildren.push({
   path: '/profile',
   name: 'admin-profile',
   component: () => import('@/views/authenticated/profile.vue'),
@@ -101,13 +108,13 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     component: () => import('@/layouts/Authenticated.vue'),
-    redirect: '/clinical/doctors',
+    redirect: '/dashboard',
     meta: { requiresAuth: true },
     children: authenticatedChildren,
   },
   {
     path: '/:pathMatch(.*)*',
-    redirect: '/clinical/doctors',
+    redirect: '/dashboard',
   },
 ]
 
@@ -137,7 +144,7 @@ router.beforeEach((to) => {
 
   const authed = auth().isAuthenticated
   if (to.meta.requiresAuth && !authed) return { name: 'login' }
-  if (to.name === 'login' && authed) return { path: '/clinical/doctors' }
+  if (to.name === 'login' && authed) return { path: '/dashboard' }
 })
 
 export default router

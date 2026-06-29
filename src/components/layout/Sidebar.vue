@@ -17,6 +17,7 @@ const props = withDefaults(
     subtitleKey?: string
     permissionPrefix?: string | null
     avatarVariant?: 'green' | 'teal' | 'sage'
+    showDashboard?: boolean
   }>(),
   {
     variant: 'clinic',
@@ -26,6 +27,7 @@ const props = withDefaults(
     subtitleKey: 'username',
     permissionPrefix: 'view-',
     avatarVariant: 'green',
+    showDashboard: false,
   },
 )
 
@@ -77,6 +79,16 @@ const filteredMenu = computed(() =>
     </div>
 
     <nav class="flex-1 overflow-y-auto px-2.5 py-3.5">
+      <router-link
+        v-if="showDashboard"
+        :to="{ name: 'dashboard' }"
+        class="mb-px flex items-center gap-2.5 rounded-lg px-3 py-[9px] text-[13.5px] transition-all duration-150"
+        :class="isActive('dashboard') ? `${accent.bg500} font-medium text-white shadow-[0_2px_8px_rgba(0,0,0,0.15)]` : 'font-normal text-white/60 hover:bg-white/[0.08] hover:text-white'"
+      >
+        <i class="ri-dashboard-line w-5 flex-shrink-0 text-center text-[15px]" />
+        Dashboard
+      </router-link>
+
       <template v-for="module in filteredMenu" :key="module.name">
         <div class="px-3 pb-1.5 pt-3.5 text-[9.5px] font-semibold uppercase tracking-[1.6px] text-white/30">
           {{ module.title }}
