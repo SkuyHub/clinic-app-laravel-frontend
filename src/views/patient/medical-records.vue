@@ -3,9 +3,9 @@ import { ref } from 'vue'
 import Table from '@/components/composites/Table.vue'
 import SearchBox from '@/components/composites/SearchBox.vue'
 import Modal from '@/components/base/Modal.vue'
+import { patientMedicalRecordsConfig } from '@/config/patient-medical-records'
 
 const search = ref('')
-const getAPI = 'patient/medicalrecords'
 
 const detail = ref<Record<string, any> | null>(null)
 const modalOpen = ref(false)
@@ -13,18 +13,6 @@ const modalOpen = ref(false)
 function openDetail(row: Record<string, any>) {
   detail.value = row
   modalOpen.value = true
-}
-
-const fields = ['diagnosis', 'treatment', 'prescription', 'rel_doctor_id', 'created_at']
-const fieldsAlias: Record<string, string> = {
-  diagnosis: 'Diagnosis',
-  treatment: 'Treatment',
-  prescription: 'Prescription',
-  rel_doctor_id: 'Doctor',
-  created_at: 'Date',
-}
-const fieldsType: Record<string, FieldTypeConfig> = {
-  created_at: { type: 'datetime' },
 }
 </script>
 
@@ -39,7 +27,7 @@ const fieldsType: Record<string, FieldTypeConfig> = {
     </div>
 
     <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-      <Table :getAPI="getAPI" endpoint-url="/patient/medicalrecords" :fields="fields" :fields-alias="fieldsAlias" :fields-type="fieldsType" :search-parameters="{ search }">
+      <Table :getAPI="patientMedicalRecordsConfig.getAPI" endpoint-url="/patient/medicalrecords" :fields="patientMedicalRecordsConfig.fields" :fields-alias="patientMedicalRecordsConfig.fieldsAlias" :fields-type="patientMedicalRecordsConfig.fieldsType" :search-parameters="{ search }">
         <template #row-actions="{ row }">
           <button class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900" @click="openDetail(row)">View</button>
         </template>

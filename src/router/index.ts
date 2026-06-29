@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import menu from '@/menu'
+import menuDoctor from '@/menu-doctor'
 import { auth } from '@/stores/auth'
 import { doctorAuth } from '@/stores/doctor-auth'
 import { patientAuth } from '@/stores/patient-auth'
@@ -29,30 +30,14 @@ authenticatedChildren.push({
 
 const doctorMenuRoutes: RouteRecordRaw[] = [
   { path: '', redirect: '/doctor/dashboard' },
-  {
-    path: 'dashboard',
-    name: 'doctor-dashboard',
-    component: () => import('@/views/doctor/dashboard.vue'),
-    meta: { title: 'Dashboard', requiresAuth: true, guard: 'doctor' },
-  },
-  {
-    path: 'appointments',
-    name: 'doctor-appointments',
-    component: () => import('@/views/doctor/appointments.vue'),
-    meta: { title: 'Appointments', requiresAuth: true, guard: 'doctor' },
-  },
-  {
-    path: 'medical-records',
-    name: 'doctor-medical-records',
-    component: () => import('@/views/doctor/medical-records.vue'),
-    meta: { title: 'Medical Records', requiresAuth: true, guard: 'doctor' },
-  },
-  {
-    path: 'profile',
-    name: 'doctor-profile',
-    component: () => import('@/views/doctor/profile.vue'),
-    meta: { title: 'Profile', requiresAuth: true, guard: 'doctor' },
-  },
+  ...menuDoctor.flatMap(m =>
+    m.routes.map(r => ({
+      path: r.name.replace('doctor-', ''),
+      name: r.name,
+      component: () => import(`@/views/doctor/${r.name.replace('doctor-', '')}.vue`),
+      meta: { title: r.title, requiresAuth: true, guard: 'doctor' as const },
+    })),
+  ),
 ]
 
 const patientMenuRoutes: RouteRecordRaw[] = [
@@ -90,14 +75,19 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/unauthenticated/login.vue'),
     meta: { title: 'Login' },
   },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('@/views/unauthenticated/register.vue'),
+    meta: { title: 'Register' },
+  },
   // Legacy login routes — redirect to unified login
   { path: '/unauthenticated/login', redirect: '/login' },
   { path: '/doctor/login', redirect: '/login' },
   { path: '/patient/login', redirect: '/login' },
   {
     path: '/doctor',
-    component: () => import('@/layouts/PortalLayout.vue'),
-    props: { role: 'doctor' },
+    component: () => import('@/layouts/DoctorLayout.vue'),
     meta: { requiresAuth: true, guard: 'doctor' },
     children: doctorMenuRoutes,
   },

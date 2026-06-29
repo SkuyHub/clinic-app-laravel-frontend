@@ -61,6 +61,11 @@ async function onSubmit() {
       <button type="submit" :disabled="loading" class="w-full rounded bg-clinic-700 py-2 text-sm font-medium text-white hover:bg-clinic-800 disabled:opacity-50">
         {{ loading ? 'Signing in…' : 'Sign in' }}
       </button>
+
+      <p class="mt-4 text-center text-sm text-gray-500">
+        Don't have an account?
+        <router-link to="/register" class="font-medium text-clinic-700 hover:text-clinic-800">Register</router-link>
+      </p>
     </form>
   </div>
 </template>

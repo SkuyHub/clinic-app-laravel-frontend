@@ -132,3 +132,37 @@ export function booleanRadio(trueLabel: string, falseLabel: string): InputFieldC
     },
   }
 }
+
+export const datetimeField: FieldTypeConfig = { type: 'datetime' }
+
+export const appointmentFields = ['appointment_date', 'appointment_time', 'rel_doctor_id', 'rel_patient_id', 'rel_room_id', 'status', 'notes']
+
+export const appointmentFieldsAlias: Record<string, string> = {
+  appointment_date: 'Date',
+  appointment_time: 'Time',
+  rel_doctor_id: 'Doctor',
+  rel_patient_id: 'Patient',
+  rel_room_id: 'Room',
+  status: 'Status',
+  notes: 'Notes',
+}
+
+export const appointmentFieldsType: Record<string, FieldTypeConfig> = {
+  status: statusBadge,
+  appointment_date: datetimeField,
+}
+
+export const medicalRecordFields = ['diagnosis', 'treatment', 'prescription', 'rel_doctor_id', 'rel_patient_id', 'created_at']
+
+export const medicalRecordFieldsAlias: Record<string, string> = {
+  diagnosis: 'Diagnosis',
+  treatment: 'Treatment',
+  prescription: 'Prescription',
+  rel_doctor_id: 'Doctor',
+  rel_patient_id: 'Patient',
+  created_at: 'Date',
+}
+
+export const medicalRecordFieldsType: Record<string, FieldTypeConfig> = {
+  created_at: datetimeField,
+}

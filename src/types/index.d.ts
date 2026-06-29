@@ -5,6 +5,7 @@ declare global {
     name: string
     title: string
     icon: string
+    permission?: string
   }
 
   type Module = {
