@@ -1,4 +1,4 @@
-import { booleanBadge } from './_defaults'
+import { booleanBadge, activeFilter } from './_defaults'
 
 const roleTask: CRUDCompositeConfig = {
   name: 'role-task',
@@ -11,7 +11,12 @@ const roleTask: CRUDCompositeConfig = {
       task_id: 'rel_task_id',
     },
     fieldsType: {
-      active: booleanBadge('Active', 'Inactive'),
+      active: { ...booleanBadge('Active', 'Inactive'), hideable: true },
+    },
+    filters: {
+      role_id: { type: 'select', label: 'Role', getAPI: 'roles', view: 'role_name' },
+      task_id: { type: 'select', label: 'Task', getAPI: 'tasks', view: 'task_name' },
+      active: activeFilter,
     },
   },
   transaction: {

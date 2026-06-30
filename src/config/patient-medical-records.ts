@@ -12,4 +12,5 @@ export const patientMedicalRecordsConfig = {
     created_at: medicalRecordFieldsAlias.created_at,
   },
   fieldsType: medicalRecordFieldsType,
+  filtersConfig: {},
 }

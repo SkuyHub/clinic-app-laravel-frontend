@@ -1,4 +1,4 @@
-import { appointmentFieldsAlias, appointmentFieldsType } from '@/app/configs/_defaults'
+import { appointmentFieldsAlias, appointmentFieldsType, statusFilter } from '@/app/configs/_defaults'
 
 export const doctorAppointmentsConfig = {
   getAPI: 'doctor/appointments',
@@ -13,4 +13,8 @@ export const doctorAppointmentsConfig = {
     notes: appointmentFieldsAlias.notes,
   },
   fieldsType: appointmentFieldsType,
+  filtersConfig: {
+    appointment_date: { type: 'daterange', label: 'Date Range' },
+    status: statusFilter,
+  },
 }

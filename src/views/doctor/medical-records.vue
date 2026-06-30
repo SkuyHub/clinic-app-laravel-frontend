@@ -27,7 +27,7 @@ function openDetail(row: Record<string, any>) {
     </div>
 
     <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-      <Table :getAPI="doctorMedicalRecordsConfig.getAPI" endpoint-url="/doctor/medicalrecords" :fields="doctorMedicalRecordsConfig.fields" :fields-alias="doctorMedicalRecordsConfig.fieldsAlias" :fields-type="doctorMedicalRecordsConfig.fieldsType" :search-parameters="{ search }">
+      <Table :getAPI="doctorMedicalRecordsConfig.getAPI" endpoint-url="/doctor/medicalrecords" :fields="doctorMedicalRecordsConfig.fields" :fields-alias="doctorMedicalRecordsConfig.fieldsAlias" :fields-type="doctorMedicalRecordsConfig.fieldsType" :filters-config="doctorMedicalRecordsConfig.filtersConfig" :search-parameters="{ search }">
         <template #row-actions="{ row }">
           <button class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900" @click="openDetail(row)">View</button>
         </template>

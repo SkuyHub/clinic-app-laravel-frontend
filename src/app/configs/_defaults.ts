@@ -30,8 +30,8 @@ export const defaultTableConfig: {
     updated_at: 'Updated',
   },
   fieldsType: {
-    created_at: { type: 'datetime' },
-    updated_at: { type: 'datetime' },
+    created_at: { type: 'datetime', hideable: true, defaultHidden: true },
+    updated_at: { type: 'datetime', hideable: true, defaultHidden: true },
   },
 }
 
@@ -165,4 +165,32 @@ export const medicalRecordFieldsAlias: Record<string, string> = {
 
 export const medicalRecordFieldsType: Record<string, FieldTypeConfig> = {
   created_at: datetimeField,
+}
+
+export const activeFilter: FilterConfig = {
+  type: 'select',
+  label: 'Status',
+  options: [
+    { value: '1', label: 'Active' },
+    { value: '0', label: 'Inactive' },
+  ],
+}
+
+export const availableFilter: FilterConfig = {
+  type: 'select',
+  label: 'Status',
+  options: [
+    { value: '1', label: 'Available' },
+    { value: '0', label: 'Occupied' },
+  ],
+}
+
+export const statusFilter: FilterConfig = {
+  type: 'select',
+  label: 'Status',
+  options: [
+    { value: 'scheduled', label: 'Scheduled' },
+    { value: 'completed', label: 'Completed' },
+    { value: 'cancelled', label: 'Cancelled' },
+  ],
 }

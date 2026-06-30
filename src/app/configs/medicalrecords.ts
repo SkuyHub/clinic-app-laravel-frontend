@@ -11,6 +11,10 @@ const medicalrecords: CRUDCompositeConfig = {
       fields: ['doctor_id', 'patient_id', 'diagnosis', 'created_at'],
       fieldsProxy: { doctor_id: 'rel_doctor_id', patient_id: 'rel_patient_id' },
       fieldsType: { ...defaultTableConfig.fieldsType },
+      filters: {
+        doctor_id: { type: 'select', label: 'Doctor', getAPI: 'doctors', view: 'fullname' },
+        patient_id: { type: 'select', label: 'Patient', getAPI: 'patients', view: 'fullname' },
+      },
     },
   },
   transaction: {

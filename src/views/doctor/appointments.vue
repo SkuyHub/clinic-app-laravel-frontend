@@ -74,7 +74,7 @@ async function updateStatus(row: Record<string, any>, status: string) {
     </div>
 
     <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-      <Table ref="tableRef" :getAPI="doctorAppointmentsConfig.getAPI" endpoint-url="/doctor/appointments" :fields="doctorAppointmentsConfig.fields" :fields-alias="doctorAppointmentsConfig.fieldsAlias" :fields-type="doctorAppointmentsConfig.fieldsType" :search-parameters="{ search }">
+      <Table ref="tableRef" :getAPI="doctorAppointmentsConfig.getAPI" endpoint-url="/doctor/appointments" :fields="doctorAppointmentsConfig.fields" :fields-alias="doctorAppointmentsConfig.fieldsAlias" :fields-type="doctorAppointmentsConfig.fieldsType" :filters-config="doctorAppointmentsConfig.filtersConfig" :search-parameters="{ search }">
         <template #row-actions="{ row }">
           <div class="flex items-center gap-2">
             <button class="rounded border border-gray-300 px-2 py-1 text-xs text-gray-600 hover:border-gray-400 hover:text-gray-900" @click="openDetail(row)">View</button>

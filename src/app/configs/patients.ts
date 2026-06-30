@@ -11,7 +11,21 @@ const patients: CRUDCompositeConfig = {
       fieldsAlias: { photo: 'Name' },
       fieldsType: {
         photo: { type: 'avatar-name', props: { nameField: 'fullname', variant: 'teal' } },
+        email: { hideable: true },
+        phone: { hideable: true },
+        gender: { hideable: true },
+        birthdate: { hideable: true },
         ...defaultTableConfig.fieldsType,
+      },
+      filters: {
+        gender: {
+          type: 'select',
+          label: 'Gender',
+          options: [
+            { value: 'male', label: 'Male' },
+            { value: 'female', label: 'Female' },
+          ],
+        },
       },
     },
   },

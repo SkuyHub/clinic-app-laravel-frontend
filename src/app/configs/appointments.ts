@@ -1,4 +1,4 @@
-import { defaultTableConfig, defaultFieldProxy, statusBadge } from './_defaults'
+import { defaultTableConfig, defaultFieldProxy, statusBadge, statusFilter } from './_defaults'
 
 const appointments: CRUDCompositeConfig = {
   name: 'appointments',
@@ -11,6 +11,10 @@ const appointments: CRUDCompositeConfig = {
       fields: ['doctor_id', 'patient_id', 'room_id', 'appointment_date', 'appointment_time', 'status'],
       fieldsProxy: { doctor_id: 'rel_doctor_id', patient_id: 'rel_patient_id', room_id: 'rel_room_id' },
       fieldsType: { status: statusBadge },
+      filters: {
+        status: statusFilter,
+        appointment_date: { type: 'daterange', label: 'Date Range' },
+      },
     },
   },
   transaction: {

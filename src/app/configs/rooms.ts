@@ -1,4 +1,4 @@
-import { booleanBadge, booleanRadio, defaultTableConfig } from './_defaults'
+import { booleanBadge, booleanRadio, defaultTableConfig, availableFilter } from './_defaults'
 
 const rooms: CRUDCompositeConfig = {
   name: 'rooms',
@@ -8,7 +8,11 @@ const rooms: CRUDCompositeConfig = {
     fieldsType: { available: booleanBadge('Available', 'Occupied'), ...defaultTableConfig.fieldsType },
     list: {
       fields: ['room_code', 'room_name', 'capacity', 'available'],
-      fieldsType: { available: booleanBadge('Available', 'Occupied') },
+      fieldsType: {
+        capacity: { hideable: true },
+        available: { ...booleanBadge('Available', 'Occupied'), hideable: true },
+      },
+      filters: { available: availableFilter },
     },
   },
   transaction: {

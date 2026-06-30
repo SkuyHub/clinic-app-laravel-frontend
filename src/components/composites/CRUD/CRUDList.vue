@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import Table from '../Table.vue'
 import SearchBox from '../SearchBox.vue'
+import FilterBar from '../FilterBar.vue'
 import { defaultTableConfig } from '@/app/configs/_defaults'
 import { onDelete } from '@/app/actions/CRUD/CRUDList'
 
@@ -15,6 +16,11 @@ const route = useRoute()
 const router = useRouter()
 const tableRef = ref<InstanceType<typeof Table>>()
 const search = ref('')
+const filterValues = ref<Record<string, string>>({})
+
+const listFilters = computed<Record<string, FilterConfig>>(() =>
+  props.config.view?.list?.filters ?? props.config.view?.filters ?? {},
+)
 
 const listConfig = computed(() => ({
   uid: props.config.view?.list?.uid ?? 'id',
@@ -29,6 +35,11 @@ const listConfig = computed(() => ({
     ...defaultTableConfig.fieldsType,
     ...(props.config.view?.list?.fieldsType || props.config.view?.fieldsType || props.config.fieldsType),
   },
+}))
+
+const mergedSearchParams = computed(() => ({
+  ...filterValues.value,
+  search: search.value,
 }))
 
 function openCreate() {
@@ -59,6 +70,7 @@ async function handleDelete(row: Record<string, any>) {
       <div class="flex items-center gap-4">
         <h1 class="text-xl font-semibold text-clinic-900">{{ config.title ?? route.meta.title }}</h1>
         <SearchBox v-model="search" />
+        <FilterBar v-if="Object.keys(listFilters).length" v-model="filterValues" :filters="listFilters" />
       </div>
       <button v-if="(config.actions?.create ?? true) && permissions.create" class="rounded bg-clinic-700 px-4 py-2 text-sm font-medium text-white hover:bg-clinic-800" @click="openCreate">
         + Add {{ config.title }}
@@ -66,7 +78,7 @@ async function handleDelete(row: Record<string, any>) {
     </div>
 
     <div class="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
-      <Table ref="tableRef" v-bind="listConfig" :search-parameters="{ search }">
+      <Table ref="tableRef" v-bind="listConfig" :search-parameters="mergedSearchParams">
         <template #row-actions="{ row }">
           <div class="flex items-center gap-2">
             <button

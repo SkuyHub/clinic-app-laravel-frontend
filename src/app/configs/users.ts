@@ -1,4 +1,4 @@
-import { defaultTableConfig, booleanBadge, booleanRadio } from './_defaults'
+import { defaultTableConfig, booleanBadge, booleanRadio, activeFilter } from './_defaults'
 
 const users: CRUDCompositeConfig = {
   name: 'users',
@@ -13,7 +13,13 @@ const users: CRUDCompositeConfig = {
       fieldsAlias: { photo: 'Name' },
       fieldsType: {
         photo: { type: 'avatar-name', props: { nameField: 'fullname', variant: 'sage' } },
-        active: booleanBadge('Active', 'Inactive'),
+        email: { hideable: true },
+        role_id: { hideable: true },
+        active: { ...booleanBadge('Active', 'Inactive'), hideable: true },
+      },
+      filters: {
+        role_id: { type: 'select', label: 'Role', getAPI: 'roles', view: 'role_name' },
+        active: activeFilter,
       },
     },
   },

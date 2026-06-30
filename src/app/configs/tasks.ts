@@ -1,4 +1,4 @@
-import { defaultTableConfig, booleanBadge, booleanRadio } from './_defaults'
+import { defaultTableConfig, booleanBadge, booleanRadio, activeFilter } from './_defaults'
 
 const tasks: CRUDCompositeConfig = {
   name: 'tasks',
@@ -8,7 +8,14 @@ const tasks: CRUDCompositeConfig = {
     fieldsType: { active: booleanBadge('Active', 'Inactive'), ...defaultTableConfig.fieldsType },
     list: {
       fields: ['task_code', 'task_name', 'module', 'active'],
-      fieldsType: { active: booleanBadge('Active', 'Inactive') },
+      fieldsType: {
+        module: { hideable: true },
+        active: { ...booleanBadge('Active', 'Inactive'), hideable: true },
+      },
+      filters: {
+        module: { type: 'text', label: 'Module' },
+        active: activeFilter,
+      },
     },
   },
   transaction: {

@@ -1,4 +1,4 @@
-import { defaultTableConfig, booleanBadge, booleanRadio } from './_defaults'
+import { defaultTableConfig, booleanBadge, booleanRadio, availableFilter } from './_defaults'
 
 const doctors: CRUDCompositeConfig = {
   name: 'doctors',
@@ -9,7 +9,7 @@ const doctors: CRUDCompositeConfig = {
     list: {
       fields: [
         'photo',
-        // 'specialization',
+        'specialization',
         'email',
         'phone',
         'available'
@@ -17,8 +17,14 @@ const doctors: CRUDCompositeConfig = {
       fieldsAlias: { photo: 'Name' },
       fieldsType: {
         photo: { type: 'avatar-name', props: { nameField: 'fullname', variant: 'green' } },
-        available: booleanBadge('Available', 'Occupied'),
+        email: { hideable: true },
+        phone: { hideable: true },
+        available: { ...booleanBadge('Available', 'Occupied'), hideable: true },
         ...defaultTableConfig.fieldsType,
+      },
+      filters: {
+        specialization: { type: 'text', label: 'Specialization' },
+        available: availableFilter,
       },
     },
   },

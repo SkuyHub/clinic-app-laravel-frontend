@@ -21,6 +21,8 @@ declare global {
   type FieldTypeConfig = {
     type: string
     props?: Record<string, any>
+    hideable?: boolean
+    defaultHidden?: boolean
   }
 
   type CRUDActions = {
@@ -30,6 +32,14 @@ declare global {
     detail?: boolean
   }
 
+  type FilterConfig = {
+    type: 'select' | 'text' | 'date' | 'daterange'
+    label?: string
+    options?: { value: string; label: string }[]
+    getAPI?: string
+    view?: string
+  }
+
   type ListConfig = {
     uid?: string
     getAPI?: string
@@ -37,6 +47,7 @@ declare global {
     fieldsAlias?: Record<string, string>
     fieldsProxy?: Record<string, string>
     fieldsType?: Record<string, FieldTypeConfig>
+    filters?: Record<string, FilterConfig>
   }
 
   type ViewConfig = {
